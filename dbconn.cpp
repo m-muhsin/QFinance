@@ -13,6 +13,7 @@ bool DbConn::connectDb()
 {
     bool isConnected = false;
 
+    //opening connection
     if(!isConnected) {
         isConnected = db.open();
     }
