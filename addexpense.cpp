@@ -9,8 +9,10 @@ AddExpense::AddExpense(QWidget *parent) :
 {
     ui->setupUi(this);
     expense = new Expense;
-
+    calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
+
+    connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
 }
 
 AddExpense::~AddExpense()
@@ -43,4 +45,14 @@ void AddExpense::on_btnCancel_clicked()
     ui->txtCategory->clear();
     ui->txtDescription->clear();
     ui->txtPayee->clear();
+}
+
+void AddExpense::on_btnOpenCalculator_clicked()
+{
+    calculator->show();
+}
+
+void AddExpense::equalsClicked(QString amount)
+{
+    ui->txtAmount->setText(amount);
 }

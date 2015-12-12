@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "expense.h"
+#include "calculator.h"
 
 namespace Ui {
 class AddExpense;
@@ -21,9 +22,14 @@ private slots:
 
     void on_btnCancel_clicked();
 
+    void on_btnOpenCalculator_clicked();
+
+    void equalsClicked(QString);
+
 private:
     Ui::AddExpense *ui;
     Transaction *expense; //polymorphism
+    Calculator *calculator;
 };
 
 #endif // ADDEXPENSE_H

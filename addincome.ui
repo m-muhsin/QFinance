@@ -136,6 +136,13 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="btnOpenCalculator">
+           <property name="text">
+            <string>Calculator</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="0" column="0">
@@ -216,7 +223,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>60</width>
+             <width>65</width>
              <height>25</height>
             </size>
            </property>

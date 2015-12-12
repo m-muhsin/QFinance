@@ -9,8 +9,11 @@ AddIncome::AddIncome(QWidget *parent) :
 {
     ui->setupUi(this);
     income = new Income;
-
+    calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
+
+    connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
+
 }
 
 AddIncome::~AddIncome()
@@ -43,4 +46,15 @@ void AddIncome::on_Cancel_clicked()
     ui->txtCategory->clear();
     ui->txtDescription->clear();
     ui->txtPayer->clear();
+}
+
+void AddIncome::on_btnOpenCalculator_clicked()
+{
+    calculator->show();
+}
+
+void AddIncome::equalsClicked(QString amount)
+{
+    ui->txtAmount->setText(amount);
+
 }
