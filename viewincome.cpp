@@ -6,11 +6,8 @@ ViewIncome::ViewIncome(QWidget *parent) :
     ui(new Ui::ViewIncome)
 {
     ui->setupUi(this);
+    income = new Income;
     setupTable();
-//    model = new QSqlTableModel(this);
-//    model->setTable("tblincome");
-//    model->select();
-//    ui->tblIncome->setModel(model);
 }
 
 ViewIncome::~ViewIncome()
@@ -20,26 +17,14 @@ ViewIncome::~ViewIncome()
 
 void ViewIncome::on_btnDelete_clicked()
 {
-    deleteIncome();
-}
-
-void ViewIncome::deleteIncome()
-{
     QModelIndexList list = ui->tblIncome->selectionModel()->selectedRows();
     qDebug() << list.count();
-    while (!list.isEmpty()) {
-        model->removeRows(list.last().row(), 1);
-        list.removeLast();
-        qDebug() << model->submitAll();
-    }
+    income->deleteIncome(list);
     setupTable();
 }
 
 void ViewIncome::setupTable()
 {
-    model = new QSqlTableModel(this);
-    model->setTable("tblincome");
-    model->select();
-    ui->tblIncome->setModel(model);
+    ui->tblIncome->setModel(income->prepareTable()); //model
     ui->tblIncome->setColumnHidden(0, true);
 }

@@ -34,15 +34,15 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionAdd_Income_triggered()
 {
-    income = new Income(this);
-    ui->tabWidget->insertTab(ui->tabWidget->count() + 1, income, "New Income");
+    addIncome = new AddIncome(this);
+    ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addIncome, "New Income");
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
 }
 
 void MainWindow::on_actionAdd_Expense_triggered()
 {
-    expense = new Expense(this);
-    ui->tabWidget->insertTab(ui->tabWidget->count() + 1, expense, "New Expense");
+    addExpense = new AddExpense(this);
+    ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addExpense, "New Expense");
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
 }
 

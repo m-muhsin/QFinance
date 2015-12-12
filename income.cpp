@@ -1,42 +1,12 @@
 #include "income.h"
-#include "ui_income.h"
 
-#include <QMessageBox>
-
-Income::Income(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Income)
-{
-    ui->setupUi(this);
-
-    QDate date = QDate::currentDate();
-    ui->txtDate->setDate(date);
-}
-
-Income::~Income()
-{
-    delete ui;
-}
-
-void Income::on_btnSave_clicked()
-{
-    addIncome();
-}
-
-void Income::on_Cancel_clicked()
+Income::Income()
 {
 
 }
 
-void Income::addIncome()
+bool Income::insertIncome(QString date, int amount, QString payer, QString category, QString description)
 {
-    //fetch data from form
-    date = ui->txtDate->text();
-    amount = ui->txtAmount->text().toInt();
-    payer = ui->txtPayer->text();
-    category = ui->txtCategory->text();
-    description = ui->txtDescription->toPlainText();
-
     //Prepare query
     QSqlQuery query;
     QString sql = "INSERT INTO tblincome(date, amount, payer, category, description) "
@@ -57,11 +27,24 @@ void Income::addIncome()
 
     query.finish();
 
-    if(isSaved) {
-        QMessageBox::information(this, "Income","Saved Income Successfully");
-    }
-    else {
-        QMessageBox::warning(this, "Income", query.lastError().text());
-    }
+    return isSaved;
 
+}
+
+QSqlTableModel* Income::prepareTable()
+{
+    model = new QSqlTableModel;
+    model->setTable("tblincome");
+    model->select();
+    return model;
+}
+
+void Income::deleteIncome(QModelIndexList list)
+{
+    qDebug() << "inside deleteIncome";
+    while (!list.isEmpty()) {
+        model->removeRows(list.last().row(), 1);
+        list.removeLast();
+        qDebug() << model->submitAll();
+    }
 }

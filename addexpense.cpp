@@ -1,11 +1,11 @@
-#include "expense.h"
-#include "ui_expense.h"
+#include "addexpense.h"
+#include "ui_addexpense.h"
 
 #include <QMessageBox>
 
-Expense::Expense(QWidget *parent) :
+AddExpense::AddExpense(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Expense)
+    ui(new Ui::AddExpense)
 {
     ui->setupUi(this);
 
@@ -13,12 +13,12 @@ Expense::Expense(QWidget *parent) :
     ui->txtDate->setDate(date);
 }
 
-Expense::~Expense()
+AddExpense::~AddExpense()
 {
     delete ui;
 }
 
-void Expense::addExpense()
+void AddExpense::insertExpense()
 {
     //fetch data from form
     date = ui->txtDate->text();
@@ -48,14 +48,14 @@ void Expense::addExpense()
     query.finish();
 
     if(isSaved) {
-        QMessageBox::information(this, "Expense","Saved Expense Successfully");
+        QMessageBox::information(this, "Expense", "Expense saved Successfully");
     }
     else {
-        QMessageBox::warning(this, "Expense", query.lastError().text());
+        QMessageBox::warning(this, "Expense", "An error has occured. Please contact developer");
     }
 }
 
-void Expense::on_btnSave_clicked()
+void AddExpense::on_btnSave_clicked()
 {
-    addExpense();
+    insertExpense();
 }

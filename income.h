@@ -1,34 +1,25 @@
 #ifndef INCOME_H
 #define INCOME_H
 
-#include <QWidget>
 #include <QSqlQuery>
 #include <QDebug>
+#include <QSqlTableModel>
+#include <QModelIndexList>
 #include "dbconn.h"
 
-namespace Ui {
-class Income;
-}
-
-class Income : public QWidget
+class Income
 {
-    Q_OBJECT
-
 public:
-    explicit Income(QWidget *parent = 0);
-    ~Income();
-
-private slots:
-    void on_btnSave_clicked();
-
-    void on_Cancel_clicked();
+    Income();
 
 public slots:
-    void addIncome();
+    bool insertIncome(QString date, int amount, QString payer, QString category, QString description);
+    QSqlTableModel* prepareTable();
+    void deleteIncome(QModelIndexList list);
 
 private:
-    Ui::Income *ui;
     DbConn *dbConn;
+    QSqlTableModel *model;
 
     QString date;
     int amount;

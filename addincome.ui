@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Income</class>
- <widget class="QWidget" name="Income">
+ <class>AddIncome</class>
+ <widget class="QWidget" name="AddIncome">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -68,8 +68,17 @@
          </item>
          <item>
           <widget class="QDateEdit" name="txtDate">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::UpDownArrows</enum>
+           </property>
            <property name="displayFormat">
             <string>dd/MM/yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

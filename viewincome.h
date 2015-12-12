@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlTableModel>
 #include <QDebug>
+#include "income.h"
 
 namespace Ui {
 class ViewIncome;
@@ -22,9 +23,9 @@ private slots:
 
 private:
     Ui::ViewIncome *ui;
+    Income *income;
     QSqlTableModel *model;
 
-    void deleteIncome();
     void setupTable();
 };
 

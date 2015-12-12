@@ -1,5 +1,5 @@
-#ifndef EXPENSE_H
-#define EXPENSE_H
+#ifndef ADDEXPENSE_H
+#define ADDEXPENSE_H
 
 #include <QWidget>
 #include <QDebug>
@@ -7,25 +7,25 @@
 #include "dbconn.h"
 
 namespace Ui {
-class Expense;
+class AddExpense;
 }
 
-class Expense : public QWidget
+class AddExpense : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Expense(QWidget *parent = 0);
-    ~Expense();
+    explicit AddExpense(QWidget *parent = 0);
+    ~AddExpense();
 
 public slots:
-    void addExpense();
+    void insertExpense();
 
 private slots:
     void on_btnSave_clicked();
 
 private:
-    Ui::Expense *ui;
+    Ui::AddExpense *ui;
     DbConn *dbConn;
 
     QString date;
@@ -35,4 +35,4 @@ private:
     QString description;
 };
 
-#endif // EXPENSE_H
+#endif // ADDEXPENSE_H

@@ -14,21 +14,23 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    income.cpp \
-    expense.cpp \
+    addincome.cpp \
+    addexpense.cpp \
     dbconn.cpp \
     viewincome.cpp \
-    viewexpense.cpp
+    viewexpense.cpp \
+    income.cpp
 
 HEADERS  += mainwindow.h \
-    income.h \
-    expense.h \
+    addincome.h \
+    addexpense.h \
     dbconn.h \
     viewincome.h \
-    viewexpense.h
+    viewexpense.h \
+    income.h
 
 FORMS    += mainwindow.ui \
-    income.ui \
-    expense.ui \
+    addincome.ui \
+    addexpense.ui \
     viewincome.ui \
     viewexpense.ui

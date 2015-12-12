@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
-#include "income.h"
-#include "expense.h"
+#include "addincome.h"
+#include "addexpense.h"
 #include "dbconn.h"
 
 #include "viewincome.h"
@@ -37,8 +37,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Income *income;
-    Expense *expense;
+    AddIncome *addIncome;
+    AddExpense *addExpense;
     DbConn *dbConn;
 
     ViewIncome *vIncome;
