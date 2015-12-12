@@ -1,10 +1,5 @@
 #include "expense.h"
 
-Expense::Expense()
-{
-
-}
-
 bool Expense::insertTransaction(QString date, int amount, QString payee, QString category, QString description)
 {
     //Prepare query
@@ -29,22 +24,4 @@ bool Expense::insertTransaction(QString date, int amount, QString payee, QString
 
     return isSaved;
 
-}
-
-QSqlTableModel* Expense::viewTransaction()
-{
-    model = new QSqlTableModel;
-    model->setTable("tblexpense");
-    model->select();
-    return model;
-}
-
-void Expense::deleteTransaction(QModelIndexList list)
-{
-    qDebug() << "inside deleteExpense";
-    while (!list.isEmpty()) {
-        model->removeRows(list.last().row(), 1);
-        list.removeLast();
-        qDebug() << model->submitAll();
-    }
 }

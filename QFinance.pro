@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     viewincome.cpp \
     viewexpense.cpp \
     income.cpp \
-    expense.cpp
+    expense.cpp \
+    transaction.cpp
 
 HEADERS  += mainwindow.h \
     addincome.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     viewincome.h \
     viewexpense.h \
     income.h \
-    expense.h
+    expense.h \
+    transaction.h
 
 FORMS    += mainwindow.ui \
     addincome.ui \

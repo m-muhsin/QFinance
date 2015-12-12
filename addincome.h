@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::AddIncome *ui;
-    Income *income;
+    Transaction *income; //polymorphism
 };
 
 #endif // ADDINCOME_H

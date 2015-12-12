@@ -19,9 +19,11 @@ public:
 private slots:
     void on_btnSave_clicked();
 
+    void on_btnCancel_clicked();
+
 private:
     Ui::AddExpense *ui;
-    Expense *expense;
+    Transaction *expense; //polymorphism
 };
 
 #endif // ADDEXPENSE_H

@@ -25,6 +25,6 @@ void ViewExpense::on_btnDelete_clicked()
 
 void ViewExpense::setupTable()
 {
-    ui->tblExpense->setModel(expense->viewTransaction());
+    ui->tblExpense->setModel(expense->viewTransaction("expense"));
     ui->tblExpense->setColumnHidden(0, true);
 }

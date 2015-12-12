@@ -3,29 +3,16 @@
 
 #include <QSqlQuery>
 #include <QDebug>
-#include <QSqlTableModel>
-#include <QModelIndexList>
-#include "dbconn.h"
+#include "transaction.h"
 
-class Expense
+class Expense: public Transaction
 {
-public:
-    Expense();
 
 public slots:
     bool insertTransaction(QString date, int amount, QString payee, QString category, QString description);
-    QSqlTableModel* viewTransaction();
-    void deleteTransaction(QModelIndexList list);
 
 private:
-    DbConn *dbConn;
-    QSqlTableModel *model;
-
-    QString date;
-    int amount;
     QString payee;
-    QString category;
-    QString description;
 };
 
 #endif // EXPENSE_H

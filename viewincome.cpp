@@ -25,6 +25,6 @@ void ViewIncome::on_btnDelete_clicked()
 
 void ViewIncome::setupTable()
 {
-    ui->tblIncome->setModel(income->viewTransaction()); //model
+    ui->tblIncome->setModel(income->viewTransaction("income")); //model
     ui->tblIncome->setColumnHidden(0, true);
 }

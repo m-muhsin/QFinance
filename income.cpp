@@ -1,10 +1,5 @@
 #include "income.h"
 
-Income::Income()
-{
-
-}
-
 bool Income::insertTransaction(QString date, int amount, QString payer, QString category, QString description)
 {
     //Prepare query
@@ -29,22 +24,4 @@ bool Income::insertTransaction(QString date, int amount, QString payer, QString 
 
     return isSaved;
 
-}
-
-QSqlTableModel* Income::viewTransaction()
-{
-    model = new QSqlTableModel;
-    model->setTable("tblincome");
-    model->select();
-    return model;
-}
-
-void Income::deleteTransaction(QModelIndexList list)
-{
-    qDebug() << "inside deleteIncome";
-    while (!list.isEmpty()) {
-        model->removeRows(list.last().row(), 1);
-        list.removeLast();
-        qDebug() << model->submitAll();
-    }
 }

@@ -10,8 +10,7 @@ AddExpense::AddExpense(QWidget *parent) :
     ui->setupUi(this);
     expense = new Expense;
 
-    QDate date = QDate::currentDate();
-    ui->txtDate->setDate(date);
+    ui->txtDate->setDate(QDate::currentDate());
 }
 
 AddExpense::~AddExpense()
@@ -35,4 +34,13 @@ void AddExpense::on_btnSave_clicked()
     else {
         QMessageBox::warning(this, "Expense", "An error has occured. Please contact developer");
     }
+}
+
+void AddExpense::on_btnCancel_clicked()
+{
+    ui->txtDate->setDate(QDate::currentDate());
+    ui->txtAmount->clear();
+    ui->txtCategory->clear();
+    ui->txtDescription->clear();
+    ui->txtPayee->clear();
 }

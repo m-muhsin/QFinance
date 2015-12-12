@@ -6,7 +6,6 @@ DbConn::DbConn()
     qDebug() << "Connecting to db ...";
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("D:/Qt Projects/QFinance/QFinance.sqlite");
-    //    db.databaseName(QDir::currentPath()"");
 }
 
 bool DbConn::connectDb()

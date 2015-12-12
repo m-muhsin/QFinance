@@ -10,8 +10,7 @@ AddIncome::AddIncome(QWidget *parent) :
     ui->setupUi(this);
     income = new Income;
 
-    QDate date = QDate::currentDate();
-    ui->txtDate->setDate(date);
+    ui->txtDate->setDate(QDate::currentDate());
 }
 
 AddIncome::~AddIncome()
@@ -39,5 +38,9 @@ void AddIncome::on_btnSave_clicked()
 
 void AddIncome::on_Cancel_clicked()
 {
-
+    ui->txtDate->setDate(QDate::currentDate());
+    ui->txtAmount->clear();
+    ui->txtCategory->clear();
+    ui->txtDescription->clear();
+    ui->txtPayer->clear();
 }
