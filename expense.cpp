@@ -1,21 +1,21 @@
-#include "income.h"
+#include "expense.h"
 
-Income::Income()
+Expense::Expense()
 {
 
 }
 
-bool Income::insertTransaction(QString date, int amount, QString payer, QString category, QString description)
+bool Expense::insertTransaction(QString date, int amount, QString payee, QString category, QString description)
 {
     //Prepare query
     QSqlQuery query;
-    QString sql = "INSERT INTO tblincome(date, amount, payer, category, description) "
-                 "VALUES(:date, :amount, :payer, :category, :description)";
+    QString sql = "INSERT INTO tblexpense(date, amount, payee, category, description) "
+                 "VALUES(:date, :amount, :payee, :category, :description)";
     query.prepare(sql);
 
     query.bindValue(":date", date);
     query.bindValue(":amount", amount);
-    query.bindValue(":payer", payer);
+    query.bindValue(":payee", payee);
     query.bindValue(":category", category);
     query.bindValue(":description", description);
 
@@ -31,17 +31,17 @@ bool Income::insertTransaction(QString date, int amount, QString payer, QString 
 
 }
 
-QSqlTableModel* Income::viewTransaction()
+QSqlTableModel* Expense::viewTransaction()
 {
     model = new QSqlTableModel;
-    model->setTable("tblincome");
+    model->setTable("tblexpense");
     model->select();
     return model;
 }
 
-void Income::deleteTransaction(QModelIndexList list)
+void Expense::deleteTransaction(QModelIndexList list)
 {
-    qDebug() << "inside deleteIncome";
+    qDebug() << "inside deleteExpense";
     while (!list.isEmpty()) {
         model->removeRows(list.last().row(), 1);
         list.removeLast();

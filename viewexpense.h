@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlTableModel>
 #include <QDebug>
+#include "expense.h"
 
 namespace Ui {
 class ViewExpense;
@@ -22,9 +23,9 @@ private slots:
 
 private:
     Ui::ViewExpense *ui;
+    Expense *expense;
     QSqlTableModel *model;
 
-    void deleteExpense();
     void setupTable();
 };
 

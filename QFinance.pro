@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     dbconn.cpp \
     viewincome.cpp \
     viewexpense.cpp \
-    income.cpp
+    income.cpp \
+    expense.cpp
 
 HEADERS  += mainwindow.h \
     addincome.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     dbconn.h \
     viewincome.h \
     viewexpense.h \
-    income.h
+    income.h \
+    expense.h
 
 FORMS    += mainwindow.ui \
     addincome.ui \

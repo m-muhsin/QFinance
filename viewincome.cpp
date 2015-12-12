@@ -19,12 +19,12 @@ void ViewIncome::on_btnDelete_clicked()
 {
     QModelIndexList list = ui->tblIncome->selectionModel()->selectedRows();
     qDebug() << list.count();
-    income->deleteIncome(list);
+    income->deleteTransaction(list);
     setupTable();
 }
 
 void ViewIncome::setupTable()
 {
-    ui->tblIncome->setModel(income->prepareTable()); //model
+    ui->tblIncome->setModel(income->viewTransaction()); //model
     ui->tblIncome->setColumnHidden(0, true);
 }

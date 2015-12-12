@@ -28,7 +28,7 @@ void AddIncome::on_btnSave_clicked()
     QString category = ui->txtCategory->text();
     QString description = ui->txtDescription->toPlainText();
 
-    bool inserted = income->insertIncome(date, amount, payer, category, description);
+    bool inserted = income->insertTransaction(date, amount, payer, category, description);
     if(inserted) {
         QMessageBox::information(this, "Income","Income saved Successfully");
     }

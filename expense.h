@@ -1,5 +1,5 @@
-#ifndef INCOME_H
-#define INCOME_H
+#ifndef EXPENSE_H
+#define EXPENSE_H
 
 #include <QSqlQuery>
 #include <QDebug>
@@ -7,13 +7,13 @@
 #include <QModelIndexList>
 #include "dbconn.h"
 
-class Income
+class Expense
 {
 public:
-    Income();
+    Expense();
 
 public slots:
-    bool insertTransaction(QString date, int amount, QString payer, QString category, QString description);
+    bool insertTransaction(QString date, int amount, QString payee, QString category, QString description);
     QSqlTableModel* viewTransaction();
     void deleteTransaction(QModelIndexList list);
 
@@ -23,9 +23,9 @@ private:
 
     QString date;
     int amount;
-    QString payer;
+    QString payee;
     QString category;
     QString description;
 };
 
-#endif // INCOME_H
+#endif // EXPENSE_H

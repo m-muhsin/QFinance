@@ -2,9 +2,7 @@
 #define ADDEXPENSE_H
 
 #include <QWidget>
-#include <QDebug>
-#include <QSqlQuery>
-#include "dbconn.h"
+#include "expense.h"
 
 namespace Ui {
 class AddExpense;
@@ -18,21 +16,12 @@ public:
     explicit AddExpense(QWidget *parent = 0);
     ~AddExpense();
 
-public slots:
-    void insertExpense();
-
 private slots:
     void on_btnSave_clicked();
 
 private:
     Ui::AddExpense *ui;
-    DbConn *dbConn;
-
-    QString date;
-    int amount;
-    QString payee;
-    QString category;
-    QString description;
+    Expense *expense;
 };
 
 #endif // ADDEXPENSE_H
