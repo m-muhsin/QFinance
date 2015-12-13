@@ -8,6 +8,7 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+
     loginModel = new LoginModel;
 
     connect(this, SIGNAL(btnLogin_clicked()), this, SLOT(checkLogin()));
@@ -15,7 +16,6 @@ Login::Login(QWidget *parent) :
 
 Login::~Login()
 {
-    loginModel->~LoginModel();
     delete ui;
 }
 

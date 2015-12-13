@@ -2,6 +2,7 @@
 #define CALCULATORMODEL_H
 
 #include <QDebug>
+#include <QSqlQuery>
 
 class CalculatorModel
 {

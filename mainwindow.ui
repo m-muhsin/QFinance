@@ -30,67 +30,214 @@
        <attribute name="title">
         <string>QFinance</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="1" column="1">
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="1">
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
               <family>Segoe UI</family>
-              <pointsize>20</pointsize>
+              <pointsize>16</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>QFinance v1.0</string>
+             <string>Your account Summary:</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Calibri Light</family>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Muhammad Muhsin 
-10515923 
-Pymouth University</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="lbLIncome">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Income: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblIncomeAmount">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 255, 59)</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="lblExpense">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Expense: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblExpenseAmount">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="lblBalance">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Balance:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblBalanceAmount">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Calibri Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
+        </item>
+        <item row="2" column="1">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>116</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="2">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>30</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>149</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -127,6 +274,7 @@ Pymouth University</string>
    <addaction name="actionAdd_Expense"/>
    <addaction name="actionView_Income"/>
    <addaction name="actionView_Expense"/>
+   <addaction name="actionAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
@@ -173,6 +321,14 @@ Pymouth University</string>
    </property>
    <property name="toolTip">
     <string>View Expense records in a table</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>About QFinance</string>
    </property>
   </action>
  </widget>

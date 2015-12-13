@@ -3,12 +3,12 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include "dbconn.h"
 #include "addincome.h"
 #include "addexpense.h"
-#include "dbconn.h"
-
 #include "viewincome.h"
 #include "viewexpense.h"
+#include "about.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +25,8 @@ public:
 private slots:
     void closeTab(int);
 
+    void showSummary();
+
     void on_actionQuit_triggered();
 
     void on_actionAdd_Income_triggered();
@@ -35,13 +37,17 @@ private slots:
 
     void on_actionView_Expense_triggered();
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
+    DbConn *dbConn;
     AddIncome *addIncome;
     AddExpense *addExpense;
 
     ViewIncome *vIncome;
     ViewExpense *vExpense;
+    About *about;
 };
 
 #endif // MAINWINDOW_H

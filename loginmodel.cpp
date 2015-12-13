@@ -2,15 +2,7 @@
 #include <QDebug>
 LoginModel::LoginModel()
 {
-    qDebug() << "Calling connectDb ... ";
-    dbConn = new DbConn();
-    dbConn->connectDb();
-}
 
-LoginModel::~LoginModel()
-{
-    qDebug() << "~LoginModel() called. Closing DB";
-    dbConn->closeDb();
 }
 
 bool LoginModel::login(QString username, QString password)
