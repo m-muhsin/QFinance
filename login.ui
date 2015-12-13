@@ -145,6 +145,9 @@
              <height>25</height>
             </size>
            </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
           </widget>
          </item>
         </layout>
@@ -173,14 +176,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btnLogin">
          <property name="text">
           <string>Login</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btnExit">
          <property name="text">
           <string>Exit</string>
          </property>
@@ -208,10 +211,6 @@
    </item>
   </layout>
   <zorder>label</zorder>
-  <zorder>lblPassword</zorder>
-  <zorder>gridLayoutWidget</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>horizontalLayoutWidget_3</zorder>
   <zorder>horizontalSpacer_2</zorder>
   <zorder>horizontalSpacer_3</zorder>
   <zorder>verticalSpacer</zorder>

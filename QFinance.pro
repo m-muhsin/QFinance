@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     transaction.cpp \
     calculator.cpp \
     calculatormodel.cpp \
-    login.cpp
+    login.cpp \
+    loginmodel.cpp
 
 HEADERS  += mainwindow.h \
     addincome.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     transaction.h \
     calculator.h \
     calculatormodel.h \
-    login.h
+    login.h \
+    loginmodel.h
 
 FORMS    += mainwindow.ui \
     addincome.ui \
