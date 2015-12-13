@@ -9,14 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->tabWidget, SIGNAL(tabCloseRequested(int)),this, SLOT(closeTab(int)));
 
-    qDebug() << "Calling connectDb ... ";
-    dbConn = new DbConn();
-    dbConn->connectDb();
 }
 
 MainWindow::~MainWindow()
 {
-    dbConn->closeDb();
     delete ui;
 }
 

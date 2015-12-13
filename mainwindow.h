@@ -39,7 +39,6 @@ private:
     Ui::MainWindow *ui;
     AddIncome *addIncome;
     AddExpense *addExpense;
-    DbConn *dbConn;
 
     ViewIncome *vIncome;
     ViewExpense *vExpense;

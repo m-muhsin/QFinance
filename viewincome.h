@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::ViewIncome *ui;
-    Income *income;
+    Transaction *income;
     QSqlTableModel *model;
 
     void setupTable();

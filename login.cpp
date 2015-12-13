@@ -15,6 +15,7 @@ Login::Login(QWidget *parent) :
 
 Login::~Login()
 {
+    loginModel->~LoginModel();
     delete ui;
 }
 

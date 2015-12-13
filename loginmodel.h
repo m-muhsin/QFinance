@@ -9,10 +9,11 @@ class LoginModel
 {
 public:
     LoginModel();
+    ~LoginModel();
     bool login(QString, QString);
 
 private:
-    DbConn dbConn;
+    DbConn *dbConn;
     QString username;
     QString password;
 
