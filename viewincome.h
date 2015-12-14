@@ -17,6 +17,7 @@ class ViewIncome : public QWidget
 public:
     explicit ViewIncome(QWidget *parent = 0);
     ~ViewIncome();
+    void setupTable();
 
 private slots:
     void on_btnDelete_clicked();
@@ -25,8 +26,6 @@ private:
     Ui::ViewIncome *ui;
     Transaction *income;
     QSqlTableModel *model;
-
-    void setupTable();
 };
 
 #endif // VIEWINCOME_H

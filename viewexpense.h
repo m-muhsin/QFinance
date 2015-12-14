@@ -17,6 +17,7 @@ class ViewExpense : public QWidget
 public:
     explicit ViewExpense(QWidget *parent = 0);
     ~ViewExpense();
+    void setupTable();
 
 private slots:
     void on_btnDelete_clicked();
@@ -25,8 +26,6 @@ private:
     Ui::ViewExpense *ui;
     Transaction *expense;
     QSqlTableModel *model;
-
-    void setupTable();
 };
 
 #endif // VIEWEXPENSE_H

@@ -106,20 +106,22 @@ void MainWindow::on_actionView_Income_triggered()
 {
     QString label = "View Income";
     if (!tabExists(label)) {
-        vIncome = new ViewIncome(this);
-        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, vIncome, label);
+        viewIncome = new ViewIncome(this);
+        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewIncome, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
-    }
+    } else
+        viewIncome->setupTable();
 }
 
 void MainWindow::on_actionView_Expense_triggered()
 {
     QString label = "View Expense";
     if (!tabExists(label)) {
-        vExpense = new ViewExpense(this);
-        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, vExpense, label);
+        viewExpense = new ViewExpense(this);
+        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewExpense, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
-    }
+    } else
+        viewExpense->setupTable();
 }
 
 void MainWindow::on_actionAbout_triggered()

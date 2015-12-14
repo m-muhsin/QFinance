@@ -18,30 +18,49 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="3" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="QLabel" name="lblPayer">
-           <property name="minimumSize">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
             <size>
              <width>60</width>
              <height>25</height>
             </size>
            </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
            <property name="text">
-            <string>Payer: </string>
+            <string>Add Income</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="txtPayer">
-           <property name="minimumSize">
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>100</width>
-             <height>25</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
-          </widget>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -84,33 +103,6 @@
          </item>
         </layout>
        </item>
-       <item row="4" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QLabel" name="lblCategory">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Category: </string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="txtCategory">
-           <property name="minimumSize">
-            <size>
-             <width>100</width>
-             <height>25</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item row="2" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
@@ -145,39 +137,63 @@
          </item>
         </layout>
        </item>
-       <item row="0" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item row="3" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
+          <widget class="QLabel" name="lblPayer">
+           <property name="minimumSize">
             <size>
              <width>60</width>
              <height>25</height>
             </size>
            </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <family>Segoe UI</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
            <property name="text">
-            <string>Add Income</string>
+            <string>Payer: </string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_4">
+          <widget class="QLineEdit" name="txtPayer">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>25</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="lblCategory">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Category: </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbCategory">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="currentIndex">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -294,7 +310,6 @@
  <tabstops>
   <tabstop>txtAmount</tabstop>
   <tabstop>txtPayer</tabstop>
-  <tabstop>txtCategory</tabstop>
   <tabstop>txtDescription</tabstop>
   <tabstop>btnSave</tabstop>
   <tabstop>Cancel</tabstop>

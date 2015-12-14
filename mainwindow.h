@@ -46,11 +46,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
     DbConn *dbConn;
+
     AddIncome *addIncome;
     AddExpense *addExpense;
-
-    ViewIncome *vIncome;
-    ViewExpense *vExpense;
+    ViewIncome *viewIncome;
+    ViewExpense *viewExpense;
     About *about;
 };
 

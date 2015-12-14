@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QSqlTableModel>
 #include <QModelIndexList>
+#include <QStandardItemModel>
+#include <QStandardItem>
 #include "dbconn.h"
 
 class Transaction
@@ -16,10 +18,12 @@ public slots:
     virtual bool insertTransaction(QString date, int amount, QString party, QString category, QString description) = 0;
     QSqlTableModel* viewTransaction(QString type);
     void deleteTransaction(QModelIndexList list);
+    QStandardItemModel* getCategory(QString type);
 
 private:
     DbConn *dbConn;
-    QSqlTableModel *model;
+    QSqlTableModel *tableModel;
+    QStandardItemModel *itemModel;
 
     QString date;
     int amount;

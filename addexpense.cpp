@@ -11,6 +11,7 @@ AddExpense::AddExpense(QWidget *parent) :
     expense = new Expense;
     calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
+    ui->cmbCategory->setModel(expense->getCategory("expense"));
 
     connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
 }
@@ -26,7 +27,7 @@ void AddExpense::on_btnSave_clicked()
     QString date = ui->txtDate->text();
     int amount = ui->txtAmount->text().toInt();
     QString payee = ui->txtPayee->text();
-    QString category = ui->txtCategory->text();
+    QString category = ui->cmbCategory->currentText();
     QString description = ui->txtDescription->toPlainText();
 
     bool inserted = expense->insertTransaction(date, amount, payee, category, description);
@@ -43,7 +44,7 @@ void AddExpense::on_btnCancel_clicked()
 {
     ui->txtDate->setDate(QDate::currentDate());
     ui->txtAmount->clear();
-    ui->txtCategory->clear();
+//    ui->txtCategory->clear();
     ui->txtDescription->clear();
     ui->txtPayee->clear();
 }

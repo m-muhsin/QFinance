@@ -11,7 +11,9 @@ AddIncome::AddIncome(QWidget *parent) :
     income = new Income;
     calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
+    ui->cmbCategory->setModel(income->getCategory("income"));
 
+    qDebug() << "cmb model: " << ui->cmbCategory->model();
     connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
 
 }
@@ -27,7 +29,7 @@ void AddIncome::on_btnSave_clicked()
     QString date = ui->txtDate->text();
     int amount = ui->txtAmount->text().toInt();
     QString payer = ui->txtPayer->text();
-    QString category = ui->txtCategory->text();
+    QString category = ui->cmbCategory->currentText();
     QString description = ui->txtDescription->toPlainText();
 
     bool inserted = income->insertTransaction(date, amount, payer, category, description);
@@ -44,7 +46,7 @@ void AddIncome::on_Cancel_clicked()
 {
     ui->txtDate->setDate(QDate::currentDate());
     ui->txtAmount->clear();
-    ui->txtCategory->clear();
+//    ui->txtCategory->clear();
     ui->txtDescription->clear();
     ui->txtPayer->clear();
 }
