@@ -263,7 +263,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Cancel</string>
+            <string>Clear</string>
            </property>
           </widget>
          </item>

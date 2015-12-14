@@ -33,6 +33,7 @@ void AddIncome::on_btnSave_clicked()
     bool inserted = income->insertTransaction(date, amount, payer, category, description);
     if(inserted) {
         QMessageBox::information(this, "Income","Income saved Successfully");
+        on_Cancel_clicked();
     }
     else {
         QMessageBox::warning(this, "Income", "An error has occured. Please contact developer");

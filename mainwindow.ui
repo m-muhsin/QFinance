@@ -54,7 +54,7 @@
                <widget class="QLabel" name="lbLIncome">
                 <property name="minimumSize">
                  <size>
-                  <width>70</width>
+                  <width>110</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -65,7 +65,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Income: </string>
+                 <string>Total Income: </string>
                 </property>
                </widget>
               </item>
@@ -84,7 +84,7 @@
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(0, 255, 59)</string>
+                 <string notr="true">color:rgb(0, 170, 0)</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -99,7 +99,7 @@
                <widget class="QLabel" name="lblExpense">
                 <property name="minimumSize">
                  <size>
-                  <width>70</width>
+                  <width>110</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -110,7 +110,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Expense: </string>
+                 <string>Total Expense: </string>
                 </property>
                </widget>
               </item>
@@ -144,7 +144,7 @@
                <widget class="QLabel" name="lblBalance">
                 <property name="minimumSize">
                  <size>
-                  <width>70</width>
+                  <width>110</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -155,7 +155,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Balance:</string>
+                 <string>Total Balance:</string>
                 </property>
                </widget>
               </item>
@@ -260,9 +260,20 @@
     </property>
     <addaction name="actionQuit"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -329,6 +340,11 @@
    </property>
    <property name="toolTip">
     <string>About QFinance</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>

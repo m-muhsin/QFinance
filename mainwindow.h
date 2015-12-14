@@ -25,7 +25,9 @@ public:
 private slots:
     void closeTab(int);
 
-    void showSummary();
+    bool tabExists(QString);
+
+    void showSummary(int);
 
     void on_actionQuit_triggered();
 
@@ -38,6 +40,8 @@ private slots:
     void on_actionView_Expense_triggered();
 
     void on_actionAbout_triggered();
+
+    void on_actionAbout_Qt_triggered();
 
 private:
     Ui::MainWindow *ui;

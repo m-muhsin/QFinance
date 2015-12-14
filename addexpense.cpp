@@ -32,6 +32,7 @@ void AddExpense::on_btnSave_clicked()
     bool inserted = expense->insertTransaction(date, amount, payee, category, description);
     if(inserted) {
         QMessageBox::information(this, "Expense","Expense saved Successfully");
+        on_btnCancel_clicked();
     }
     else {
         QMessageBox::warning(this, "Expense", "An error has occured. Please contact developer");
