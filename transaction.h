@@ -27,17 +27,18 @@ public:
     void setParty(const QString &value);
 
     void setCategory(const QString &value);
+    QString getCategory() const;
 
     QString getDescription() const;
     void setDescription(const QString &value);
 
+
 public slots:
-    virtual bool insertTransaction(QString date, int amount, QString party, QString category, QString description) = 0;
-    virtual bool updateTransaction(QString date, int amount, QString party, QString category, QString description) = 0;
+    virtual bool insertTransaction(Transaction* transaction) = 0;
     QSqlTableModel* viewTransaction(QString type);
     QSqlQueryModel* getTransaction(QString type, int id);
     void deleteTransaction(QModelIndexList list);
-    QStandardItemModel* getCategory(QString type);
+    QStandardItemModel* getCategoriesList(QString type);
 
 private:
     DbConn *dbConn;

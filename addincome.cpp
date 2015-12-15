@@ -9,7 +9,7 @@ AddIncome::AddIncome(QWidget *parent) :
     income = new Income;
     calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
-    ui->cmbCategory->setModel(income->getCategory("income"));
+    ui->cmbCategory->setModel(income->getCategoriesList("income"));
 
     qDebug() << "cmb model: " << ui->cmbCategory->model();
     connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
@@ -25,6 +25,7 @@ void AddIncome::setupEdit(QSqlQueryModel *rowModel)
 {
     ui->lblHeader->setText("Edit Income");
     QString format = "dd/MM/yyyy";
+    this->tempId = rowModel->record(0).value(0).toInt();
     ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
     ui->txtAmount->setText(rowModel->record(0).value(2).toString());
     ui->txtPayer->setText(rowModel->record(0).value(3).toString());
@@ -35,20 +36,24 @@ void AddIncome::setupEdit(QSqlQueryModel *rowModel)
 
 void AddIncome::on_btnSave_clicked()
 {
-    //fetch data from form
-    QString date = ui->txtDate->text();
-    int amount = ui->txtAmount->text().toInt();
-    QString payer = ui->txtPayer->text();
-    QString category = ui->cmbCategory->currentText();
-    QString description = ui->txtDescription->toPlainText();
+    Transaction* income = new Income;
+    income->setId(this->tempId);
+    income->setDate(ui->txtDate->text());
+    income->setAmount(ui->txtAmount->text().toInt());
+    income->setParty(ui->txtPayer->text());
+    income->setCategory(ui->cmbCategory->currentText());
+    income->setDescription(ui->txtDescription->toPlainText());
 
-    bool inserted = income->insertTransaction(date, amount, payer, category, description);
+    bool inserted = income->insertTransaction(income);
     if(inserted) {
-        QMessageBox::information(this, "Income", "Income saved Successfully");
+        if(this->tempId = -1)
+            QMessageBox::information(this, "Income", "Income saved Successfully");
+        else
+            QMessageBox::information(this, "Income", "Income updated Successfully");
         on_Cancel_clicked();
     }
     else {
-        QMessageBox::warning(this, "Income", "An error has occured. Please contact developer");
+        QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
     }
 }
 
@@ -56,7 +61,6 @@ void AddIncome::on_Cancel_clicked()
 {
     ui->txtDate->setDate(QDate::currentDate());
     ui->txtAmount->clear();
-//    ui->txtCategory->clear();
     ui->txtDescription->clear();
     ui->txtPayer->clear();
 }

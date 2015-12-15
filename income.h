@@ -9,8 +9,7 @@ class Income: public Transaction
 {
 
 public slots:
-    bool insertTransaction(QString date, int amount, QString payer, QString category, QString description);
-    bool updateTransaction(QString date, int amount, QString payer, QString category, QString description);
+    bool insertTransaction(Transaction* income);
 
 };
 

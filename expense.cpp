@@ -1,18 +1,26 @@
 #include "expense.h"
 
-bool Expense::insertTransaction(QString date, int amount, QString payee, QString category, QString description)
+bool Expense::insertTransaction(Transaction* expense)
 {
     //Prepare query
     QSqlQuery query;
-    QString sql = "INSERT INTO tblexpense(date, amount, payee, category, description) "
-                 "VALUES(:date, :amount, :payee, :category, :description)";
-    query.prepare(sql);
 
-    query.bindValue(":date", date);
-    query.bindValue(":amount", amount);
-    query.bindValue(":payee", payee);
-    query.bindValue(":category", category);
-    query.bindValue(":description", description);
+    if(expense->getId() == -1) {
+        qDebug() << "new transaction";
+        query.prepare("INSERT INTO tblexpense(date, amount, payee, category, description) "
+                      "VALUES(:date, :amount, :payee, :category, :description)");
+    } else {
+        qDebug() << "update transaction";
+        query.prepare("UPDATE tblexpense SET date = :date, amount = :amount, payee = :payee, category = :category, "
+                      "description = :description WHERE id = :id");
+        query.bindValue(":id", expense->getId());
+    }
+
+    query.bindValue(":date", expense->getDate());
+    query.bindValue(":amount", expense->getAmount());
+    query.bindValue(":payee", expense->getParty());
+    query.bindValue(":category", expense->getCategory());
+    query.bindValue(":description", expense->getDescription());
 
     //Execute query
     bool isSaved = query.exec();
@@ -23,10 +31,5 @@ bool Expense::insertTransaction(QString date, int amount, QString payee, QString
     query.finish();
 
     return isSaved;
-
-}
-
-bool Expense::updateTransaction(QString date, int amount, QString payer, QString category, QString description)
-{
 
 }

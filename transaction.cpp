@@ -34,7 +34,7 @@ void Transaction::deleteTransaction(QModelIndexList list)
     }
 }
 
-QStandardItemModel* Transaction::getCategory(QString type)
+QStandardItemModel* Transaction::getCategoriesList(QString type)
 {
     itemModel = new QStandardItemModel;
     QSqlQuery query;
@@ -50,6 +50,11 @@ QStandardItemModel* Transaction::getCategory(QString type)
         qDebug() << "Error loading Category: " << query.lastError();
     }
     return itemModel;
+}
+
+QString Transaction::getCategory() const
+{
+    return category;
 }
 
 QString Transaction::getDescription() const

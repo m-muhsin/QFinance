@@ -34,6 +34,7 @@ private:
     Ui::AddExpense *ui;
     Transaction *expense; //polymorphism
     Calculator *calculator;
+    int tempId = -1;
 };
 
 #endif // ADDEXPENSE_H
