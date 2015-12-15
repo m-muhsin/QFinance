@@ -36,5 +36,5 @@ void ViewExpense::on_btnEdit_clicked()
     QModelIndex index = selectedRow.takeFirst();
     int in = index.data().toInt();
     queryModel = expense->getTransaction("expense", in);
-    emit editTransactionClicked(queryModel);
+    emit editTransactionClicked("expense", queryModel);
 }

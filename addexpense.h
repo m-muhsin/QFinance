@@ -2,6 +2,9 @@
 #define ADDEXPENSE_H
 
 #include <QWidget>
+#include <QSqlQueryModel>
+#include <QMessageBox>
+#include <QSqlRecord>
 #include "expense.h"
 #include "calculator.h"
 
@@ -16,6 +19,7 @@ class AddExpense : public QWidget
 public:
     explicit AddExpense(QWidget *parent = 0);
     ~AddExpense();
+    void setupEdit(QSqlQueryModel *rowModel);
 
 private slots:
     void on_btnSave_clicked();

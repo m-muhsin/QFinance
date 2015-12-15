@@ -25,3 +25,8 @@ bool Expense::insertTransaction(QString date, int amount, QString payee, QString
     return isSaved;
 
 }
+
+bool Expense::updateTransaction(QString date, int amount, QString payer, QString category, QString description)
+{
+
+}

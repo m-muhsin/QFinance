@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QSqlQueryModel>
+#include <QMessageBox>
+#include <QSqlRecord>
 #include "income.h"
 #include "calculator.h"
 
@@ -17,6 +19,7 @@ class AddIncome : public QWidget
 public:
     explicit AddIncome(QWidget *parent = 0);
     ~AddIncome();
+    void setupEdit(QSqlQueryModel* rowModel);
 
 private slots:
     void on_btnSave_clicked();

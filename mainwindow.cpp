@@ -77,15 +77,24 @@ void MainWindow::showSummary(int index)
     }
 }
 
-void MainWindow::editTransaction(QSqlQueryModel* rowModel)
+void MainWindow::editTransaction(QString type, QSqlQueryModel* rowModel)
 {
     qDebug() << "inside editTransaction";
-    qDebug() << rowModel->record(0).value(0).toString();
-    qDebug() << rowModel->record(0).value(1).toString();
-    qDebug() << rowModel->record(0).value(2).toString();
-    qDebug() << rowModel->record(0).value(3).toString();
-    qDebug() << rowModel->record(0).value(4).toString();
-    qDebug() << rowModel->record(0).value(5).toString();
+    if(type == "income") {
+        qDebug() << "inside type == income";
+        addIncome = new AddIncome(this);
+        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addIncome, "Edit Income");
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+        addIncome->setupEdit(rowModel);
+    }
+    else if(type == "expense") {
+            qDebug() << "inside type == expense";
+            addExpense = new AddExpense(this);
+            ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addExpense, "Edit Expense");
+            ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+            addExpense->setupEdit(rowModel);
+    }
+
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -118,7 +127,7 @@ void MainWindow::on_actionView_Income_triggered()
     QString label = "View Income";
     if (!tabExists(label)) {
         viewIncome = new ViewIncome(this);
-        connect(viewIncome, SIGNAL(editTransactionClicked(QSqlQueryModel*)), this, SLOT(editTransaction(QSqlQueryModel*)));
+        connect(viewIncome, SIGNAL(editTransactionClicked(QString, QSqlQueryModel*)), this, SLOT(editTransaction(QString, QSqlQueryModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewIncome, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else
@@ -130,7 +139,7 @@ void MainWindow::on_actionView_Expense_triggered()
     QString label = "View Expense";
     if (!tabExists(label)) {
         viewExpense = new ViewExpense(this);
-        connect(viewExpense, SIGNAL(editTransactionClicked(QSqlQueryModel*)), this, SLOT(editTransaction(QSqlQueryModel*)));
+        connect(viewExpense, SIGNAL(editTransactionClicked(QString, QSqlQueryModel*)), this, SLOT(editTransaction(QString, QSqlQueryModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewExpense, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else

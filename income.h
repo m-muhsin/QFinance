@@ -10,9 +10,7 @@ class Income: public Transaction
 
 public slots:
     bool insertTransaction(QString date, int amount, QString payer, QString category, QString description);
-
-private:
-    QString payer;
+    bool updateTransaction(QString date, int amount, QString payer, QString category, QString description);
 
 };
 

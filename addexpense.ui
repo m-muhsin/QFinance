@@ -33,7 +33,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="lblExpense">
+      <widget class="QLabel" name="lblHeader">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -278,7 +278,6 @@
    </item>
   </layout>
   <zorder></zorder>
-  <zorder>layoutWidget</zorder>
  </widget>
  <tabstops>
   <tabstop>txtAmount</tabstop>

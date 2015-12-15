@@ -37,6 +37,6 @@ void ViewIncome::on_btnEdit_clicked()
     QModelIndex index = selectedRow.takeFirst();
     int in = index.data().toInt();
     queryModel = income->getTransaction("income", in);
-    emit editTransactionClicked(queryModel);
+    emit editTransactionClicked("income", queryModel);
 
 }

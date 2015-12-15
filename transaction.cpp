@@ -52,3 +52,58 @@ QStandardItemModel* Transaction::getCategory(QString type)
     return itemModel;
 }
 
+QString Transaction::getDescription() const
+{
+    return description;
+}
+
+void Transaction::setDescription(const QString &value)
+{
+    description = value;
+}
+
+void Transaction::setCategory(const QString &value)
+{
+    category = value;
+}
+
+QString Transaction::getParty() const
+{
+    return party;
+}
+
+void Transaction::setParty(const QString &value)
+{
+    party = value;
+}
+
+int Transaction::getAmount() const
+{
+    return amount;
+}
+
+void Transaction::setAmount(int value)
+{
+    amount = value;
+}
+
+int Transaction::getId() const
+{
+    return id;
+}
+
+void Transaction::setId(int value)
+{
+    id = value;
+}
+
+QString Transaction::getDate() const
+{
+    return date;
+}
+
+void Transaction::setDate(const QString &value)
+{
+    date = value;
+}
+

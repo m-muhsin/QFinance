@@ -10,9 +10,8 @@ class Expense: public Transaction
 
 public slots:
     bool insertTransaction(QString date, int amount, QString payee, QString category, QString description);
+    bool updateTransaction(QString date, int amount, QString payer, QString category, QString description);
 
-private:
-    QString payee;
 };
 
 #endif // EXPENSE_H

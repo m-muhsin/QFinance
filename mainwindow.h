@@ -31,7 +31,7 @@ private slots:
 
     void showSummary(int);
 
-    void editTransaction(QSqlQueryModel* rowModel);
+    void editTransaction(QString type, QSqlQueryModel* rowModel);
 
     void on_actionQuit_triggered();
 

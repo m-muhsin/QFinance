@@ -1,8 +1,6 @@
 #include "addexpense.h"
 #include "ui_addexpense.h"
 
-#include <QMessageBox>
-
 AddExpense::AddExpense(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddExpense)
@@ -19,6 +17,17 @@ AddExpense::AddExpense(QWidget *parent) :
 AddExpense::~AddExpense()
 {
     delete ui;
+}
+
+void AddExpense::setupEdit(QSqlQueryModel *rowModel)
+{
+    ui->lblHeader->setText("Edit Expense");
+    QString format = "dd/MM/yyyy";
+    ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
+    ui->txtAmount->setText(rowModel->record(0).value(2).toString());
+    ui->txtPayee->setText(rowModel->record(0).value(3).toString());
+    ui->cmbCategory->setCurrentText(rowModel->record(0).value(4).toString());
+    ui->txtDescription->setText(rowModel->record(0).value(5).toString());
 }
 
 void AddExpense::on_btnSave_clicked()

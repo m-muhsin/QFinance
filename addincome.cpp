@@ -1,8 +1,6 @@
 #include "addincome.h"
 #include "ui_addincome.h"
 
-#include <QMessageBox>
-
 AddIncome::AddIncome(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddIncome)
@@ -23,6 +21,18 @@ AddIncome::~AddIncome()
     delete ui;
 }
 
+void AddIncome::setupEdit(QSqlQueryModel *rowModel)
+{
+    ui->lblHeader->setText("Edit Income");
+    QString format = "dd/MM/yyyy";
+    ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
+    ui->txtAmount->setText(rowModel->record(0).value(2).toString());
+    ui->txtPayer->setText(rowModel->record(0).value(3).toString());
+    ui->cmbCategory->setCurrentText(rowModel->record(0).value(4).toString());
+    ui->txtDescription->setText(rowModel->record(0).value(5).toString());
+
+}
+
 void AddIncome::on_btnSave_clicked()
 {
     //fetch data from form
@@ -34,7 +44,7 @@ void AddIncome::on_btnSave_clicked()
 
     bool inserted = income->insertTransaction(date, amount, payer, category, description);
     if(inserted) {
-        QMessageBox::information(this, "Income","Income saved Successfully");
+        QMessageBox::information(this, "Income", "Income saved Successfully");
         on_Cancel_clicked();
     }
     else {
