@@ -13,6 +13,17 @@ QSqlTableModel* Transaction::viewTransaction(QString type)
     return tableModel;
 }
 
+QSqlQueryModel* Transaction::getTransaction(QString type, int id)
+{
+    QString in = QString::number(id);
+    queryModel = new QSqlQueryModel;
+    queryModel->setQuery(QString
+                         ("SELECT * FROM '%1' WHERE id = '%2'")
+                         .arg("tbl"+type).arg(in));
+
+    return queryModel;
+}
+
 void Transaction::deleteTransaction(QModelIndexList list)
 {
     qDebug() << "inside deleteTransaction";

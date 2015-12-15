@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlTableModel>
 #include <QDebug>
+#include <QSqlQueryModel>
 #include "income.h"
 
 namespace Ui {
@@ -19,13 +20,19 @@ public:
     ~ViewIncome();
     void setupTable();
 
+signals:
+    void editTransactionClicked(QSqlQueryModel* rowModel);
+
 private slots:
     void on_btnDelete_clicked();
+
+    void on_btnEdit_clicked();
 
 private:
     Ui::ViewIncome *ui;
     Transaction *income;
     QSqlTableModel *model;
+    QSqlQueryModel *queryModel;
 };
 
 #endif // VIEWINCOME_H

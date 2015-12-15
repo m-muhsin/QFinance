@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QSqlQueryModel>
+#include <QSqlRecord>
 #include "dbconn.h"
 #include "addincome.h"
 #include "addexpense.h"
@@ -28,6 +30,8 @@ private slots:
     bool tabExists(QString);
 
     void showSummary(int);
+
+    void editTransaction(QSqlQueryModel* rowModel);
 
     void on_actionQuit_triggered();
 

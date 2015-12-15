@@ -2,6 +2,7 @@
 #define ADDINCOME_H
 
 #include <QWidget>
+#include <QSqlQueryModel>
 #include "income.h"
 #include "calculator.h"
 

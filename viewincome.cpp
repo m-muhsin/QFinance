@@ -1,5 +1,6 @@
 #include "viewincome.h"
 #include "ui_viewincome.h"
+#include<QSqlRecord>
 
 ViewIncome::ViewIncome(QWidget *parent) :
     QWidget(parent),
@@ -27,4 +28,15 @@ void ViewIncome::setupTable()
 {
     ui->tblIncome->setModel(income->viewTransaction("income")); //model
     ui->tblIncome->setColumnHidden(0, true);
+}
+
+void ViewIncome::on_btnEdit_clicked()
+{
+    qDebug() << "inside on_btnEdit_clicked()";
+    QModelIndexList selectedRow = ui->tblIncome->selectionModel()->selectedRows();
+    QModelIndex index = selectedRow.takeFirst();
+    int in = index.data().toInt();
+    queryModel = income->getTransaction("income", in);
+    emit editTransactionClicked(queryModel);
+
 }

@@ -28,3 +28,13 @@ void ViewExpense::setupTable()
     ui->tblExpense->setModel(expense->viewTransaction("expense"));
     ui->tblExpense->setColumnHidden(0, true);
 }
+
+void ViewExpense::on_btnEdit_clicked()
+{
+    qDebug() << "inside ViewExpense::on_btnEdit_clicked()";
+    QModelIndexList selectedRow = ui->tblExpense->selectionModel()->selectedRows();
+    QModelIndex index = selectedRow.takeFirst();
+    int in = index.data().toInt();
+    queryModel = expense->getTransaction("expense", in);
+    emit editTransactionClicked(queryModel);
+}

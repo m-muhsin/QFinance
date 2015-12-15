@@ -77,6 +77,17 @@ void MainWindow::showSummary(int index)
     }
 }
 
+void MainWindow::editTransaction(QSqlQueryModel* rowModel)
+{
+    qDebug() << "inside editTransaction";
+    qDebug() << rowModel->record(0).value(0).toString();
+    qDebug() << rowModel->record(0).value(1).toString();
+    qDebug() << rowModel->record(0).value(2).toString();
+    qDebug() << rowModel->record(0).value(3).toString();
+    qDebug() << rowModel->record(0).value(4).toString();
+    qDebug() << rowModel->record(0).value(5).toString();
+}
+
 void MainWindow::on_actionQuit_triggered()
 {
     qApp->exit();
@@ -107,6 +118,7 @@ void MainWindow::on_actionView_Income_triggered()
     QString label = "View Income";
     if (!tabExists(label)) {
         viewIncome = new ViewIncome(this);
+        connect(viewIncome, SIGNAL(editTransactionClicked(QSqlQueryModel*)), this, SLOT(editTransaction(QSqlQueryModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewIncome, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else
@@ -118,6 +130,7 @@ void MainWindow::on_actionView_Expense_triggered()
     QString label = "View Expense";
     if (!tabExists(label)) {
         viewExpense = new ViewExpense(this);
+        connect(viewExpense, SIGNAL(editTransactionClicked(QSqlQueryModel*)), this, SLOT(editTransaction(QSqlQueryModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewExpense, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else
