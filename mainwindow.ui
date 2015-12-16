@@ -287,6 +287,7 @@
    <addaction name="actionView_Expense"/>
    <addaction name="actionAbout"/>
    <addaction name="actionSettings"/>
+   <addaction name="actionLog_out"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
@@ -354,6 +355,11 @@
    </property>
    <property name="toolTip">
     <string>Change Settins</string>
+   </property>
+  </action>
+  <action name="actionLog_out">
+   <property name="text">
+    <string>Log out</string>
    </property>
   </action>
  </widget>

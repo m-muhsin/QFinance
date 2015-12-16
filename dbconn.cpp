@@ -10,7 +10,7 @@ DbConn::DbConn()
 
 bool DbConn::connectDb()
 {
-    bool isConnected = false;
+    bool isConnected = db.isOpen();
 
     //opening connection
     if(!isConnected) {

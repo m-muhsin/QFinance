@@ -38,11 +38,11 @@ QStandardItemModel* Transaction::getCategoriesList(QString type)
 {
     itemModel = new QStandardItemModel;
     QSqlQuery query;
-    QString sql = "select * from tbl"+type+"cat";
+    QString sql = "select DISTINCT catname from tbl"+type+"cat";
     if(query.exec(sql)) {
         int index = 0;
         while (query.next()) {
-            QString cat = query.value(1).toString();
+            QString cat = query.value(0).toString();
             QStandardItem *item = new QStandardItem(cat);
             itemModel->setItem(index++, item);
         }
