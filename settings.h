@@ -29,7 +29,9 @@ private slots:
 
     void on_btnIncomeCat_Add_clicked();
 
-    void on_btnExpenseCat_Add_clicked();
+    void on_btnDelete_clicked();
+
+    void on_btnExpenseCat_3_clicked();
 
 private:
     Ui::Settings *ui;

@@ -1,6 +1,9 @@
 #include "settings.h"
 #include "ui_settings.h"
-#include <QDir>
+
+#include <QSqlRecord>
+#include <QSqlField>
+
 Settings::Settings(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Settings)
@@ -8,6 +11,7 @@ Settings::Settings(QWidget *parent) :
     ui->setupUi(this);
     income = new Income;
     expense = new Expense;
+//    ui->btnDeleteCat->setVisible(false);
 }
 
 Settings::~Settings()
@@ -43,16 +47,39 @@ void Settings::on_btnIncomeCat_Add_clicked()
 {
     bool ok;
     QString newCat = QInputDialog::getText(this, tr("New"),
-                        tr("Enter Income Category name:"), QLineEdit::Normal,"", &ok);
+                        tr("Enter New Category name:"), QLineEdit::Normal,"", &ok);
     if (ok && !newCat.isEmpty())
         qDebug() << newCat;
+
+    int lastRecordId = tableModel->record(tableModel->rowCount()-1).value(0).toInt();
+
+    QSqlField field1("id", QVariant::Int);
+    field1.setValue(lastRecordId+1);
+
+    QSqlField field2("catname", QVariant::String);
+    field2.setValue(QString(newCat));
+
+    QSqlRecord record;
+
+    record.insert(0,field1);
+    record.insert(1,field2);
+
+    tableModel->insertRecord(-1, record);
+
 }
 
-void Settings::on_btnExpenseCat_Add_clicked()
+void Settings::on_btnDelete_clicked()
 {
-    bool ok;
-    QString newCat = QInputDialog::getText(this, tr("New"),
-                        tr("Enter Expense Category name:"), QLineEdit::Normal,"", &ok);
-    if (ok && !newCat.isEmpty())
-        qDebug() << newCat;
+    QModelIndexList selectedRow = ui->tblCategory->selectionModel()->selectedRows();
+
+    while (!selectedRow.isEmpty()) {
+        tableModel->removeRows(selectedRow.last().row(), 1);
+        selectedRow.removeLast();
+        qDebug() << tableModel->submitAll();
+    }
+}
+
+void Settings::on_btnExpenseCat_3_clicked()
+{
+
 }
