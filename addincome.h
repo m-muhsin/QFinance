@@ -34,7 +34,7 @@ private:
     Ui::AddIncome *ui;
     Transaction *income; //polymorphism
     Calculator *calculator;
-    int tempId = -1;
+    int tempId;
 };
 
 #endif // ADDINCOME_H

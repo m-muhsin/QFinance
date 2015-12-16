@@ -35,6 +35,7 @@ public:
 
 public slots:
     virtual bool insertTransaction(Transaction* transaction) = 0;
+    virtual bool updateTransaction(Transaction* transaction) = 0;
     QSqlTableModel* viewTransaction(QString type);
     QSqlQueryModel* getTransaction(QString type, int id);
     void deleteTransaction(QModelIndexList list);

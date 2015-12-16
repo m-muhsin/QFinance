@@ -7,6 +7,7 @@ AddIncome::AddIncome(QWidget *parent) :
 {
     ui->setupUi(this);
     income = new Income;
+    tempId = -1;
     calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
     ui->cmbCategory->setModel(income->getCategoriesList("income"));
@@ -44,17 +45,26 @@ void AddIncome::on_btnSave_clicked()
     income->setCategory(ui->cmbCategory->currentText());
     income->setDescription(ui->txtDescription->toPlainText());
 
-    bool inserted = income->insertTransaction(income);
-    if(inserted) {
-        if(this->tempId = -1)
+    if(this->tempId == -1) {
+        bool inserted = income->insertTransaction(income);
+        if(inserted) {
             QMessageBox::information(this, "Income", "Income saved Successfully");
+            on_Cancel_clicked();
+        }
         else
-            QMessageBox::information(this, "Income", "Income updated Successfully");
-        on_Cancel_clicked();
+            QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
     }
     else {
-        QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
+        bool inserted = income->updateTransaction(income);
+        if(inserted) {
+            QMessageBox::information(this, "Income", "Income updated Successfully");
+            on_Cancel_clicked();
+        }
+        else
+            QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
     }
+
+
 }
 
 void AddIncome::on_Cancel_clicked()

@@ -9,7 +9,7 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    loginModel = new LoginModel;
+    user = new User;
 
     connect(this, SIGNAL(btnLogin_clicked()), this, SLOT(checkLogin()));
 }
@@ -31,7 +31,7 @@ void Login::on_btnLogin_clicked()
 
 void Login::checkLogin()
 {
-    bool success = loginModel->login(ui->txtUsername->text(), ui->txtPassword->text());
+    bool success = user->loginUser(ui->txtUsername->text(), ui->txtPassword->text());
     if (success) {
         w.show();
         this->close();

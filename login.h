@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include "loginmodel.h"
+#include "user.h"
 #include "mainwindow.h"
 
 namespace Ui {
@@ -30,7 +30,7 @@ signals:
 
 private:
     Ui::Login *ui;
-    LoginModel *loginModel;
+    User *user;
     MainWindow w;
 
 };

@@ -9,7 +9,8 @@ class Expense: public Transaction
 {
 
 public slots:
-    bool insertTransaction(Transaction* transaction);
+    bool insertTransaction(Transaction* expense);
+    bool updateTransaction(Transaction* expense);
 
 };
 

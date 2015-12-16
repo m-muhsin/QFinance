@@ -10,6 +10,7 @@ class Income: public Transaction
 
 public slots:
     bool insertTransaction(Transaction* income);
+    bool updateTransaction(Transaction* income);
 
 };
 

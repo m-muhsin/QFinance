@@ -1,11 +1,11 @@
-#include "loginmodel.h"
+#include "user.h"
 #include <QDebug>
-LoginModel::LoginModel()
+User::User()
 {
 
 }
 
-bool LoginModel::login(QString username, QString password)
+bool User::loginUser(QString username, QString password)
 {
     QSqlQuery query;
 
@@ -17,4 +17,3 @@ bool LoginModel::login(QString username, QString password)
     return false;
 
 }
-

@@ -7,6 +7,7 @@ AddExpense::AddExpense(QWidget *parent) :
 {
     ui->setupUi(this);
     expense = new Expense;
+    tempId = -1;
     calculator = new Calculator;
     ui->txtDate->setDate(QDate::currentDate());
     ui->cmbCategory->setModel(expense->getCategoriesList("expense"));
@@ -41,17 +42,25 @@ void AddExpense::on_btnSave_clicked()
     expense->setCategory(ui->cmbCategory->currentText());
     expense->setDescription(ui->txtDescription->toPlainText());
 
-    bool inserted = expense->insertTransaction(expense);
-    if(inserted) {
-        if(this->tempId = -1)
-            QMessageBox::information(this, "Expense","Expense saved Successfully");
+    if(this->tempId == -1)  {
+        bool inserted = expense->insertTransaction(expense);
+        if(inserted) {
+                QMessageBox::information(this, "Expense","Expense saved Successfully");
+            on_btnCancel_clicked();
+        }
         else
-            QMessageBox::information(this, "Expense", "Expense updated Successfully");
-        on_btnCancel_clicked();
+            QMessageBox::warning(this, "Expense", "An error has occured. Please try again or contact developer");
     }
     else {
-        QMessageBox::warning(this, "Expense", "An error has occured. Please try again or contact developer");
+        bool inserted = expense->updateTransaction(expense);
+        if(inserted) {
+            QMessageBox::information(this, "Expense", "Expense updated Successfully");
+            on_btnCancel_clicked();
+        }
+        else
+            QMessageBox::warning(this, "Expense", "An error has occured. Please try again or contact developer");
     }
+
 }
 
 void AddExpense::on_btnCancel_clicked()
