@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::ViewExpense *ui;
     Transaction *expense;
-    QSqlTableModel *model;
+    QSqlTableModel *tableModel;
     QSqlQueryModel *queryModel;
 };
 

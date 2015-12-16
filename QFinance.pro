@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     calculatormodel.cpp \
     login.cpp \
     about.cpp \
-    user.cpp
+    user.cpp \
+    settings.cpp
 
 HEADERS  += mainwindow.h \
     addincome.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     calculatormodel.h \
     login.h \
     about.h \
-    user.h
+    user.h \
+    settings.h
 
 FORMS    += mainwindow.ui \
     addincome.ui \
@@ -50,4 +52,5 @@ FORMS    += mainwindow.ui \
     viewexpense.ui \
     calculator.ui \
     login.ui \
-    about.ui
+    about.ui \
+    settings.ui

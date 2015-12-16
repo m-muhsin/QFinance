@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::ViewIncome *ui;
     Transaction *income;
-    QSqlTableModel *model;
+    QSqlTableModel *tableModel;
     QSqlQueryModel *queryModel;
 };
 

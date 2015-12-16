@@ -286,6 +286,7 @@
    <addaction name="actionView_Income"/>
    <addaction name="actionView_Expense"/>
    <addaction name="actionAbout"/>
+   <addaction name="actionSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
@@ -345,6 +346,14 @@
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Change Settins</string>
    </property>
   </action>
  </widget>

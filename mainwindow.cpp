@@ -160,3 +160,13 @@ void MainWindow::on_actionAbout_Qt_triggered()
 {
     qApp->aboutQt();
 }
+
+void MainWindow::on_actionSettings_triggered()
+{
+    QString label = "Settings";
+    if (!tabExists(label)) {
+        settings = new Settings(this);
+        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, settings, label);
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+    }
+}

@@ -11,6 +11,7 @@
 #include "viewincome.h"
 #include "viewexpense.h"
 #include "about.h"
+#include "settings.h"
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +48,8 @@ private slots:
 
     void on_actionAbout_Qt_triggered();
 
+    void on_actionSettings_triggered();
+
 private:
     Ui::MainWindow *ui;
     DbConn *dbConn;
@@ -56,6 +59,8 @@ private:
     ViewIncome *viewIncome;
     ViewExpense *viewExpense;
     About *about;
+    Settings *settings;
+
 };
 
 #endif // MAINWINDOW_H
