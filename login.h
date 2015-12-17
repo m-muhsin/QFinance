@@ -25,13 +25,15 @@ private slots:
 
     void checkLogin();
 
+    void logout();
+
 signals:
     btnLogin_clicked();
 
 private:
     Ui::Login *ui;
     User *user;
-    MainWindow w;
+    MainWindow *w;
 
 };
 

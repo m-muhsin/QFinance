@@ -22,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    dbConn->closeDb();
     delete ui;
 }
 
@@ -169,4 +168,9 @@ void MainWindow::on_actionSettings_triggered()
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, settings, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     }
+}
+
+void MainWindow::on_actionLog_out_triggered()
+{
+    emit triggerLogOut();
 }

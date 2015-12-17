@@ -25,6 +25,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    triggerLogOut();
+
 private slots:
     void closeTab(int);
 
@@ -49,6 +52,8 @@ private slots:
     void on_actionAbout_Qt_triggered();
 
     void on_actionSettings_triggered();
+
+    void on_actionLog_out_triggered();
 
 private:
     Ui::MainWindow *ui;
