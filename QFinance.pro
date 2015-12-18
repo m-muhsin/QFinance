@@ -54,3 +54,6 @@ FORMS    += mainwindow.ui \
     login.ui \
     about.ui \
     settings.ui
+
+RESOURCES += \
+    images.qrc

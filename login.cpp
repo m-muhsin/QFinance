@@ -12,8 +12,8 @@ Login::Login(QWidget *parent) :
     user = new User;
     w = new MainWindow;
 
-    connect(this, SIGNAL(btnLogin_clicked()), this, SLOT(checkLogin()));
-    connect(w, SIGNAL(triggerLogOut()), this, SLOT(logout()));
+    connect(ui->btnLogin, SIGNAL(clicked(bool)), this, SLOT(login()));
+    connect(w, SIGNAL(on_actionLog_out_triggered()), this, SLOT(logout()));
 }
 
 Login::~Login()
@@ -23,15 +23,11 @@ Login::~Login()
 
 void Login::on_btnExit_clicked()
 {
+    w->~MainWindow();
     qApp->exit();
 }
 
-void Login::on_btnLogin_clicked()
-{
-    emit btnLogin_clicked();
-}
-
-void Login::checkLogin()
+void Login::login()
 {
     bool success = user->loginUser(ui->txtUsername->text(), ui->txtPassword->text());
     if (success) {

@@ -13,7 +13,11 @@ AddIncome::AddIncome(QWidget *parent) :
     ui->cmbCategory->setModel(income->getCategoriesList("income"));
 
     qDebug() << "cmb model: " << ui->cmbCategory->model();
-    connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
+
+    connect(ui->btnSave, SIGNAL(clicked(bool)), this, SLOT(save()));
+    connect(ui->btnClear, SIGNAL(clicked(bool)), this, SLOT(clear()));
+    connect(ui->btnOpenCalculator, SIGNAL(clicked(bool)), this, SLOT(openCalculator()));
+    connect(calculator, SIGNAL(equalsClicked(QString)), this, SLOT(onEqualsClicked(QString)));
 
 }
 
@@ -47,7 +51,7 @@ void AddIncome::setupEdit(QSqlTableModel *tableModel)
     ui->txtDescription->setText(tableModel->record(0).value(5).toString());
 }
 
-void AddIncome::on_btnSave_clicked()
+void AddIncome::save()
 {
     Transaction* income = new Income;
     income->setId(this->tempId);
@@ -57,11 +61,20 @@ void AddIncome::on_btnSave_clicked()
     income->setCategory(ui->cmbCategory->currentText());
     income->setDescription(ui->txtDescription->toPlainText());
 
+    if(income->getParty() == NULL || income->getDescription() == NULL) {
+        QMessageBox::warning(this, "Fields empty", "Please make sure all fields are entered");
+        return;
+    }
+    else if(income->getAmount() <= 0) {
+        QMessageBox::warning(this, "Wrong amount", "Amount must be a valid number");
+        return;
+    }
+
     if(this->tempId == -1) {
         bool inserted = income->insertTransaction(income);
         if(inserted) {
             QMessageBox::information(this, "Income", "Income saved Successfully");
-            on_Cancel_clicked();
+            clear();
         }
         else
             QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
@@ -70,16 +83,14 @@ void AddIncome::on_btnSave_clicked()
         bool inserted = income->updateTransaction(income);
         if(inserted) {
             QMessageBox::information(this, "Income", "Income updated Successfully");
-            on_Cancel_clicked();
+            clear();
         }
         else
             QMessageBox::warning(this, "Income", "An error has occured. Please try again or contact developer");
     }
-
-
 }
 
-void AddIncome::on_Cancel_clicked()
+void AddIncome::clear()
 {
     ui->txtDate->setDate(QDate::currentDate());
     ui->txtAmount->clear();
@@ -87,13 +98,12 @@ void AddIncome::on_Cancel_clicked()
     ui->txtPayer->clear();
 }
 
-void AddIncome::on_btnOpenCalculator_clicked()
+void AddIncome::openCalculator()
 {
     calculator->show();
 }
 
-void AddIncome::equalsClicked(QString amount)
+void AddIncome::onEqualsClicked(QString answer)
 {
-    ui->txtAmount->setText(amount);
-
+    ui->txtAmount->setText(answer);
 }

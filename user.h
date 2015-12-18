@@ -8,7 +8,11 @@
 class User
 {
 public:
-    User();
+    /**
+     * @brief This method queries the database to check if the credentials entered by the user
+     * matches the ones in the database.
+     * @return true if credentials match, false otherwise
+     */
     bool loginUser(QString, QString);
 
 private:

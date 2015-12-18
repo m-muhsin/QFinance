@@ -1,10 +1,5 @@
 #include "calculatormodel.h"
 
-CalculatorModel::CalculatorModel() : firstNumber(0), secondNumber(0), addition(0), subtraction(0), multiplication(0), division(0), result(0)
-{
-
-}
-
 void CalculatorModel::firstNumEntered(int n) { firstNumber = n; }
 
 void CalculatorModel::secondNumEntered(int n) { secondNumber = n; }

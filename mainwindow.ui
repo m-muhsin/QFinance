@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>668</width>
+    <width>669</width>
     <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>QFinance 1.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/Qt Dox/qf-logo (2).png</normaloff>:/Qt Dox/qf-logo (2).png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -31,8 +35,43 @@
         <string>QFinance</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="1" colspan="2">
+         <widget class="QLabel" name="lblHeading">
+          <property name="minimumSize">
+           <size>
+            <width>550</width>
+            <height>110</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>QFinance v1.0</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item row="1" column="1">
          <layout class="QGridLayout" name="gridLayout_2">
+          <property name="leftMargin">
+           <number>120</number>
+          </property>
           <item row="0" column="1">
            <widget class="QLabel" name="label">
             <property name="font">
@@ -48,6 +87,12 @@
           </item>
           <item row="1" column="1">
            <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
@@ -184,32 +229,6 @@
           </item>
          </layout>
         </item>
-        <item row="2" column="1">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>116</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="1" column="2">
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
@@ -217,24 +236,21 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>30</width>
+            <width>250</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
-        <item row="1" column="0">
-         <spacer name="horizontalSpacer">
+        <item row="2" column="2">
+         <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>149</width>
-            <height>20</height>
+            <width>20</width>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -250,7 +266,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>668</width>
+     <width>669</width>
      <height>21</height>
     </rect>
    </property>
@@ -364,6 +380,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

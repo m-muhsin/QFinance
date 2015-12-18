@@ -22,7 +22,6 @@ QString DbConn::getDbPath()
     if(!dbPathTxt->open(QIODevice::ReadWrite | QIODevice::Text)) {
         QMessageBox::information(0, "error", dbPathTxt->errorString());
         string txtSPath = ("/dbpath.txt");
-//        .toUtf8().constData();
         std::ofstream o(txtSPath.c_str());
         o << "D:/Qt Projects/QFinance/QFinance.sqlite" << std::endl;
     }
@@ -52,7 +51,6 @@ bool DbConn::connectDb()
 {
     bool isConnected = db.isOpen();
 
-    //opening connection
     if(!isConnected) {
         isConnected = db.open();
     }

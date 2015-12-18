@@ -12,7 +12,10 @@ AddExpense::AddExpense(QWidget *parent) :
     ui->txtDate->setDate(QDate::currentDate());
     ui->cmbCategory->setModel(expense->getCategoriesList("expense"));
 
-    connect(calculator, SIGNAL(btnEqual_clicked(QString)), this, SLOT(equalsClicked(QString)));
+    connect(ui->btnSave, SIGNAL(clicked(bool)), this, SLOT(save()));
+    connect(ui->btnClear, SIGNAL(clicked(bool)), this, SLOT(clear()));
+    connect(ui->btnOpenCalculator, SIGNAL(clicked(bool)), this, SLOT(openCalculator()));
+    connect(calculator, SIGNAL(equalsClicked(QString)), this, SLOT(onEqualsClicked(QString)));
 }
 
 AddExpense::~AddExpense()
@@ -32,7 +35,7 @@ void AddExpense::setupEdit(QSqlTableModel *tableModel)
     ui->txtDescription->setText(tableModel->record(0).value(5).toString());
 }
 
-void AddExpense::on_btnSave_clicked()
+void AddExpense::save()
 {
     Transaction* expense = new Expense;
     expense->setId(this->tempId);
@@ -42,11 +45,19 @@ void AddExpense::on_btnSave_clicked()
     expense->setCategory(ui->cmbCategory->currentText());
     expense->setDescription(ui->txtDescription->toPlainText());
 
+    if(expense->getParty() == NULL || expense->getDescription() == NULL) {
+        QMessageBox::warning(this, "Fields empty", "Please make sure all fields are entered");
+        return;
+    }
+    else if(expense->getAmount() <= 0) {
+        QMessageBox::warning(this, "Wrong amount", "Amount must be a valid number");
+        return;
+    }
     if(this->tempId == -1)  {
         bool inserted = expense->insertTransaction(expense);
         if(inserted) {
-                QMessageBox::information(this, "Expense","Expense saved Successfully");
-            on_btnCancel_clicked();
+            QMessageBox::information(this, "Expense","Expense saved Successfully");
+            clear();
         }
         else
             QMessageBox::warning(this, "Expense", "An error has occured. Please try again or contact developer");
@@ -55,15 +66,14 @@ void AddExpense::on_btnSave_clicked()
         bool inserted = expense->updateTransaction(expense);
         if(inserted) {
             QMessageBox::information(this, "Expense", "Expense updated Successfully");
-            on_btnCancel_clicked();
+            clear();
         }
         else
             QMessageBox::warning(this, "Expense", "An error has occured. Please try again or contact developer");
     }
-
 }
 
-void AddExpense::on_btnCancel_clicked()
+void AddExpense::clear()
 {
     ui->txtDate->setDate(QDate::currentDate());
     ui->txtAmount->clear();
@@ -71,12 +81,12 @@ void AddExpense::on_btnCancel_clicked()
     ui->txtPayee->clear();
 }
 
-void AddExpense::on_btnOpenCalculator_clicked()
+void AddExpense::openCalculator()
 {
     calculator->show();
 }
 
-void AddExpense::equalsClicked(QString amount)
+void AddExpense::onEqualsClicked(QString answer)
 {
-    ui->txtAmount->setText(amount);
+    ui->txtAmount->setText(answer);
 }

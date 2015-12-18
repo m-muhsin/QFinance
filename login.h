@@ -8,27 +8,35 @@
 namespace Ui {
 class Login;
 }
-
+/**
+ * @brief The Login class is a child of the QDialog class which is called when the application is
+ * run. Also called when logout is triggered from the MainWindow.
+ * This class describes user login activities.
+ */
 class Login : public QDialog
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief Sets up the UI, initializes the User and MainWindow classes and connects
+     * various SIGNALs to SLOTs.
+     * @param parent refers to the QWidget that calls this class.
+     */
     explicit Login(QWidget *parent = 0);
-    ~Login();
+
+    ~Login(); //!< The Destructor of this class deletes the UI
 
 private slots:
 
     void on_btnExit_clicked();
 
-    void on_btnLogin_clicked();
-
-    void checkLogin();
+    void login();
 
     void logout();
 
 signals:
-    btnLogin_clicked();
+    loginClicked();
 
 private:
     Ui::Login *ui;

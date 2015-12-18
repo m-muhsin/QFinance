@@ -78,9 +78,9 @@ public slots:
      */
     void deleteTransaction(QModelIndexList list);
     /**
-     * @brief getCategoriesList
-     * @param type
-     * @return
+     * @brief Gets the list of categories according to the transaction type
+     * @param type refers to which transaction category you want
+     * @return a pointer to a QStandardItemModel object
      */
     QStandardItemModel* getCategoriesList(QString type);
 

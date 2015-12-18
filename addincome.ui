@@ -259,7 +259,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="Cancel">
+          <widget class="QPushButton" name="btnClear">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -312,7 +312,7 @@
   <tabstop>txtPayer</tabstop>
   <tabstop>txtDescription</tabstop>
   <tabstop>btnSave</tabstop>
-  <tabstop>Cancel</tabstop>
+  <tabstop>btnClear</tabstop>
  </tabstops>
  <resources/>
  <connections/>

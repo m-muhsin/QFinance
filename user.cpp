@@ -1,9 +1,5 @@
 #include "user.h"
 #include <QDebug>
-User::User()
-{
-
-}
 
 bool User::loginUser(QString username, QString password)
 {
