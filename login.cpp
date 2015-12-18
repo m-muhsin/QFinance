@@ -33,7 +33,6 @@ void Login::login()
     if (success) {
         w->show();
         this->hide();
-
     }
     else {
         QMessageBox::warning(this, "Login failed", "Username and/or Paswword incorrect");

@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout_Qt, SIGNAL(triggered(bool)), this, SLOT(showAboutQt()));
     connect(ui->actionSettings, SIGNAL(triggered(bool)), this, SLOT(showSettings()));
 
+    connect(ui->actionQuit, SIGNAL(triggered(bool)), this, SLOT(quitApp()));
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(quitApp()));
 }
 

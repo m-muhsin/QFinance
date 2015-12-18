@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QSqlQuery>
+
 /**
  * @brief The CalculatorModel class is the model of the Calculator
  * that is integrated with QFinance.
@@ -10,11 +11,13 @@
 class CalculatorModel
 {
 public:
+
     /**
      * @brief Called when the first variable of the operations is entered.
      * @param n is the first number variable.
      */
     void firstNumEntered(int n);
+
     /**
      * @brief Called when the second variable of the operations is entered.
      * @param n is the second number variable.

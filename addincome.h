@@ -11,6 +11,7 @@
 namespace Ui {
 class AddIncome;
 }
+
 /**
  * @brief The AddIncome class is a child of QWidget and it is essentially the screen used
  * to add a New Income or Edit a previous Income record.
@@ -20,6 +21,7 @@ class AddIncome : public QWidget
     Q_OBJECT
 
 public:
+
     /**
      * @brief Sets up the UI, initiliazes an instance of Income class and sets up connectors
      * @param parent refers to the QWidget that calls this constructor
@@ -36,6 +38,7 @@ public:
     void setupEdit(QSqlTableModel* tableModel);
 
 private slots:
+
     /**
      * @brief This method picks the fields on the screen and stores it in an Income object.
      * It saves this object to the database after performing validation.

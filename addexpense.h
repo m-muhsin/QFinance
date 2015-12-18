@@ -11,6 +11,7 @@
 namespace Ui {
 class AddExpense;
 }
+
 /**
  * @brief The AddExpense class is a child of QWidget and it is essentially the screen used
  * to add a New Expense or Edit a previous Expense record.
@@ -20,6 +21,7 @@ class AddExpense : public QWidget
     Q_OBJECT
 
 public:
+
     /**
      * @brief Sets up the UI, initiliazes an instance of Expense class and sets up connectors
      * @param parent refers to the QWidget that calls this constructor
@@ -27,6 +29,7 @@ public:
     explicit AddExpense(QWidget *parent = 0);
 
     ~AddExpense(); //!< The Destructor of this class deletes the UI
+
     /**
      * @brief This method sets up the screen to perform an Expense Edit.
      * @param tableModel contains a single existing record which will be set to the fields
@@ -35,24 +38,28 @@ public:
     void setupEdit(QSqlTableModel *tableModel);
 
 private slots:
+
     /**
      * @brief This method picks the fields on the screen and stores it in an Expense object.
      * It saves this object to the database after performing validation.
      */
     void save();
+
     /**
      * @brief Clears the fields on the screen and sets the date to today
      */
     void clear();
 
     void openCalculator(); //!< Shows the Calculator
+
     /**
      * @brief
      * @brief Called when the Equals button on the Calculator is clicked.
      * Picks the number entered on the Calculator screens and feeds to the Amount field.
      * @param answer which appears on the Calculator screen
      */
-    void onEqualsClicked(QString answer);
+
+    void onEqualsClicked(QString answer); //!< Sets the Amount field with the value on the Calcuator display.
 
 private:
     Ui::AddExpense *ui;

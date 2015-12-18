@@ -1,5 +1,10 @@
 /**
-\QFinance 1.0
+\mainpage QFinance 1.0
 
-The main aim of this project is to create a simple, easy to use Expense Manager that runs on multiple platforms.
+QFinance is a cross platform Expense Manager, which helps you keep track of your daily income and expense. It has the following main features: <br/>
+Secure Login authentication<br/>
+Multiple User Accounts<br/>
+In built Calculator<br/>
+Summary view<br/>
+
 */

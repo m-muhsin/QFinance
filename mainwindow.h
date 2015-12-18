@@ -16,6 +16,7 @@
 namespace Ui {
 class MainWindow;
 }
+
 /**
  * @brief The MainWindow class is a child of QMainWindow and it acts as a Controller
  * and container for all the other QWidgets of this application.
@@ -25,6 +26,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     /**
      * @brief The contructor sets up the UI, removes the close button of the current tab,
      * calls the showSummary method to calculate the brief summary to be displayed and

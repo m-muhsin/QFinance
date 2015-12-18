@@ -5,9 +5,13 @@
 #include <QSqlQuery>
 #include "dbconn.h"
 
+/**
+ * @brief The User class describes the user object of the application.
+ */
 class User
 {
 public:
+
     /**
      * @brief This method queries the database to check if the credentials entered by the user
      * matches the ones in the database.

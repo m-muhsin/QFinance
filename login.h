@@ -7,6 +7,7 @@
 
 namespace Ui {
 class Login;
+
 }
 /**
  * @brief The Login class is a child of the QDialog class which is called when the application is
@@ -18,6 +19,7 @@ class Login : public QDialog
     Q_OBJECT
 
 public:
+
     /**
      * @brief Sets up the UI, initializes the User and MainWindow classes and connects
      * various SIGNALs to SLOTs.
@@ -29,14 +31,21 @@ public:
 
 private slots:
 
-    void on_btnExit_clicked();
+    void on_btnExit_clicked(); //!< Closes the Database connection and quits the application
 
+    /**
+     * @brief Checks with the credentials with the User class.
+     * Moves to the MainWindo if login successful. Gives MessageBox otherwise.
+     */
     void login();
 
+    /**
+     * @brief Hides MainWindow and shows back the Login screen.
+     */
     void logout();
 
 signals:
-    loginClicked();
+    void loginClicked();
 
 private:
     Ui::Login *ui;

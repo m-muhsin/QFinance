@@ -8,6 +8,7 @@
 namespace Ui {
 class Calculator;
 }
+
 /**
  * @brief The Calculator class is a child of QWidget and is the view of the Calculator
  * that is integrated with QFinance.
@@ -17,6 +18,7 @@ class Calculator : public QWidget
     Q_OBJECT
 
 public:
+
     /**
      * @brief Sets up the UI and initiliazes an instance of CalculatorModel class.
      * @param parent refers to the QWidget that calls this constructor.
@@ -26,6 +28,7 @@ public:
     ~Calculator(); //!< The Destructor of this class deletes the UI
 
 protected:
+
     /**
      * @brief Reimplemented from the QWidget class,
      * this event handler is used to handle state changes in the Calculator screen.
@@ -34,6 +37,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private slots:
+
     /**
      * @brief This methods appends a given number to the Calculator display.
      * This slot is called by all Number buttons on being clicked and will
@@ -62,8 +66,8 @@ private slots:
     void on_btnDivide_clicked(); //!< Called when Divide Button is clicked.
 
 signals:
-    numberClicked(QString num);
-    equalsClicked(QString answer);
+    void numberClicked(QString num);
+    void equalsClicked(QString answer);
 
 private:
     Ui::Calculator *ui;

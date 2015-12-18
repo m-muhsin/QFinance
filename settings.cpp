@@ -27,12 +27,12 @@ Settings::~Settings()
 
 void Settings::on_btnIncomeCat_clicked()
 {
-    setupCatTable("Income");
+    setupViewTable("Income");
 }
 
 void Settings::on_btnExpenseCat_clicked()
 {
-    setupCatTable("Expense");
+    setupViewTable("Expense");
 }
 
 void Settings::on_btnAddCat_clicked()
@@ -61,10 +61,10 @@ void Settings::on_btnAddCat_clicked()
 
 void Settings::on_btnEditCat_clicked()
 {
-    if(ui->tblCategory->selectionModel()->selectedRows().isEmpty())
+    if(ui->tblView->selectionModel()->selectedRows().isEmpty())
         return;
 
-    QModelIndexList selectedRow = ui->tblCategory->selectionModel()->selectedRows();
+    QModelIndexList selectedRow = ui->tblView->selectionModel()->selectedRows();
     int rowNumber = selectedRow.last().row();
 
     QSqlRecord oldRecord = tableModel->record(rowNumber);
@@ -94,16 +94,16 @@ void Settings::on_btnEditCat_clicked()
     tableModel->insertRecord(rowNumber, newRecord);
 }
 
-void Settings::setupCatTable(QString type)
+void Settings::setupViewTable(QString type)
 {
     tableModel = new QSqlTableModel;
     tableModel->setTable("tbl"+type+"cat");
     tableModel->select();
     tableModel->setHeaderData(1, Qt::Horizontal, type+" Categories",0);
 
-    ui->tblCategory->setModel(tableModel);
-    ui->tblCategory->setColumnHidden(0, true);
-    ui->tblCategory->horizontalHeader()->setStretchLastSection(true);
+    ui->tblView->setModel(tableModel);
+    ui->tblView->setColumnHidden(0, true);
+    ui->tblView->horizontalHeader()->setStretchLastSection(true);
 
     doToggleButtons(true);
 }
@@ -168,10 +168,10 @@ void Settings::on_btnUser_clicked()
     tableModel->setHeaderData(1, Qt::Horizontal,"Username",0);
     tableModel->setHeaderData(2, Qt::Horizontal,"Password",0);
 
-    ui->tblCategory->setModel(tableModel);
-    ui->tblCategory->setColumnHidden(0, true);
-    ui->tblCategory->setColumnHidden(2, true);
-    ui->tblCategory->horizontalHeader()->setStretchLastSection(true);
+    ui->tblView->setModel(tableModel);
+    ui->tblView->setColumnHidden(0, true);
+    ui->tblView->setColumnHidden(2, true);
+    ui->tblView->horizontalHeader()->setStretchLastSection(true);
 
     doToggleButtons(false);
 }
@@ -222,10 +222,11 @@ void Settings::on_btnAddUser_clicked()
 
 void Settings::on_btnEditUser_clicked()
 {
-    if(ui->tblCategory->selectionModel()->selectedRows().isEmpty())
+    qDebug() << "inside on_btnEditUser_clicked";
+    if(ui->tblView->selectionModel()->selectedRows().isEmpty())
         return;
 
-    QModelIndexList selectedRow = ui->tblCategory->selectionModel()->selectedRows();
+    QModelIndexList selectedRow = ui->tblView->selectionModel()->selectedRows();
     int rowNumber = selectedRow.last().row();
 
     QSqlRecord oldRecord = tableModel->record(rowNumber);
@@ -294,7 +295,7 @@ void Settings::doToggleButtons(bool on)
 void Settings::doDeleteRecord()
 {
     qDebug() << "doDeleteRecord()";
-    QModelIndexList selectedRow = ui->tblCategory->selectionModel()->selectedRows();
+    QModelIndexList selectedRow = ui->tblView->selectionModel()->selectedRows();
 
     while (!selectedRow.isEmpty()) {
         tableModel->removeRows(selectedRow.last().row(), 1);

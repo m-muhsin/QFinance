@@ -222,7 +222,7 @@
     </widget>
    </item>
    <item row="0" column="3" rowspan="5" colspan="3">
-    <widget class="QTableView" name="tblCategory">
+    <widget class="QTableView" name="tblView">
      <property name="font">
       <font>
        <kerning>true</kerning>
