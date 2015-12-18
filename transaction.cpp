@@ -1,10 +1,5 @@
 #include "transaction.h"
 
-Transaction::Transaction()
-{
-
-}
-
 QSqlTableModel* Transaction::viewTransaction(QString type)
 {
     tableModel = new QSqlTableModel;

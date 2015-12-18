@@ -9,12 +9,22 @@
 #include <QStandardItem>
 #include "dbconn.h"
 
+/**
+ * @brief The Transaction class describes the Transaction Object of QFinance. It is an abstract class.
+ * This class contains the common members of the two type of transaction: Income and Expense.
+ */
 class Transaction
 {
 public:
-    Transaction();
-
+    /**
+     * @brief Returns the id value of the object
+     * @return Transaction id
+     */
     int getId() const;
+    /**
+     * @brief Sets the id value of the Transaction
+     * @param Transaction id
+     */
     void setId(int value);
 
     QString getDate() const;
@@ -34,8 +44,25 @@ public:
 
 
 public slots:
+    /**
+     * @brief This is a pure virtual method since different types of Transactions have to be inserted in different
+     * ways (persistence.)
+     * @param transaction is a pointer to an object of type Transaction
+     * @return bool Confirms if the insertion was successful.
+     */
     virtual bool insertTransaction(Transaction* transaction) = 0;
+    /**
+     * @brief This is a pure virtual method since different types of Transactions have to be updated in different
+     * ways (persistence.)
+     * @param transaction is a pointer to an object of type Transaction
+     * @return bool Confirms if the insertion was successful.
+     */
     virtual bool updateTransaction(Transaction* transaction) = 0;
+    /**
+     * @brief Gives a pointer to an QSqlTableModel object which is constructed by querying from a data sets.
+     * @param type defines from which data set to query from
+     * @return a pointer to an QSqlTableModel
+     */
     QSqlTableModel* viewTransaction(QString type);
     QSqlQueryModel* getTransaction(QString type, int id);
     void deleteTransaction(QModelIndexList list);
