@@ -76,7 +76,27 @@ void MainWindow::showSummary(int index)
     }
 }
 
-void MainWindow::editTransaction(QString type, QSqlQueryModel* rowModel)
+//void MainWindow::editTransaction(QString type, QSqlQueryModel* rowModel)
+//{
+//    qDebug() << "inside editTransaction";
+//    if(type == "income") {
+//        qDebug() << "inside type == income";
+//        addIncome = new AddIncome(this);
+//        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addIncome, "Edit Income");
+//        ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+//        addIncome->setupEdit(rowModel);
+//    }
+//    else if(type == "expense") {
+//            qDebug() << "inside type == expense";
+//            addExpense = new AddExpense(this);
+//            ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addExpense, "Edit Expense");
+//            ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+//            addExpense->setupEdit(rowModel);
+//    }
+
+//}
+
+void MainWindow::editTransaction(QString type, QSqlTableModel *tableModel)
 {
     qDebug() << "inside editTransaction";
     if(type == "income") {
@@ -84,16 +104,15 @@ void MainWindow::editTransaction(QString type, QSqlQueryModel* rowModel)
         addIncome = new AddIncome(this);
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addIncome, "Edit Income");
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
-        addIncome->setupEdit(rowModel);
+        addIncome->setupEdit(tableModel);
     }
     else if(type == "expense") {
-            qDebug() << "inside type == expense";
-            addExpense = new AddExpense(this);
-            ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addExpense, "Edit Expense");
-            ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
-            addExpense->setupEdit(rowModel);
+        qDebug() << "inside type == expense";
+        addExpense = new AddExpense(this);
+        ui->tabWidget->insertTab(ui->tabWidget->count() + 1, addExpense, "Edit Expense");
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
+        addExpense->setupEdit(tableModel);
     }
-
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -126,7 +145,7 @@ void MainWindow::on_actionView_Income_triggered()
     QString label = "View Income";
     if (!tabExists(label)) {
         viewIncome = new ViewIncome(this);
-        connect(viewIncome, SIGNAL(editTransactionClicked(QString, QSqlQueryModel*)), this, SLOT(editTransaction(QString, QSqlQueryModel*)));
+        connect(viewIncome, SIGNAL(editTransactionClicked(QString, QSqlTableModel*)), this, SLOT(editTransaction(QString, QSqlTableModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewIncome, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else
@@ -138,7 +157,7 @@ void MainWindow::on_actionView_Expense_triggered()
     QString label = "View Expense";
     if (!tabExists(label)) {
         viewExpense = new ViewExpense(this);
-        connect(viewExpense, SIGNAL(editTransactionClicked(QString, QSqlQueryModel*)), this, SLOT(editTransaction(QString, QSqlQueryModel*)));
+        connect(viewExpense, SIGNAL(editTransactionClicked(QString, QSqlTableModel*)), this, SLOT(editTransaction(QString, QSqlTableModel*)));
         ui->tabWidget->insertTab(ui->tabWidget->count() + 1, viewExpense, label);
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 1);
     } else

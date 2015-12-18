@@ -19,7 +19,8 @@ class AddIncome : public QWidget
 public:
     explicit AddIncome(QWidget *parent = 0);
     ~AddIncome();
-    void setupEdit(QSqlQueryModel* rowModel);
+//    void setupEdit(QSqlQueryModel* rowModel);
+    void setupEdit(QSqlTableModel* tableModel);
 
 private slots:
     void on_btnSave_clicked();

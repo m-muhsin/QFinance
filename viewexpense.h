@@ -21,7 +21,7 @@ public:
     void setupTable();
 
 signals:
-    void editTransactionClicked(QString type, QSqlQueryModel* rowModel);
+    void editTransactionClicked(QString type, QSqlTableModel* tableModel);
 
 private slots:
     void on_btnDelete_clicked();

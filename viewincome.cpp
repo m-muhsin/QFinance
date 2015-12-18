@@ -18,6 +18,9 @@ ViewIncome::~ViewIncome()
 
 void ViewIncome::on_btnDelete_clicked()
 {
+    if(ui->tblIncome->selectionModel()->selectedRows().isEmpty())
+        return;
+
     QModelIndexList list = ui->tblIncome->selectionModel()->selectedRows();
     qDebug() << list.count();
     income->deleteTransaction(list);
@@ -32,11 +35,14 @@ void ViewIncome::setupTable()
 
 void ViewIncome::on_btnEdit_clicked()
 {
+    if(ui->tblIncome->selectionModel()->selectedRows().isEmpty())
+        return;
+
     qDebug() << "inside on_btnEdit_clicked()";
     QModelIndexList selectedRow = ui->tblIncome->selectionModel()->selectedRows();
     QModelIndex index = selectedRow.takeFirst();
     int in = index.data().toInt();
-    queryModel = income->getTransaction("income", in);
-    emit editTransactionClicked("income", queryModel);
+    tableModel = income->getTransaction("income", in);
+    emit editTransactionClicked("income", tableModel);
 
 }

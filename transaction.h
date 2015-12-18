@@ -64,8 +64,24 @@ public slots:
      * @return a pointer to an QSqlTableModel
      */
     QSqlTableModel* viewTransaction(QString type);
-    QSqlQueryModel* getTransaction(QString type, int id);
+    /**
+     * @brief Gives a pointer to an QSqlTableModel object which is constructed by querying from a data sets.
+     * This object contains only one record of data.
+     * @param type defines from which data set to query from
+     * @param id defines which record to get from
+     * @return a pointer to an QSqlTableModel with one record
+     */
+    QSqlTableModel* getTransaction(QString type, int id);
+    /**
+     * @brief Deletes a Transaction
+     * @param list specifies which items from the QModelIndexList to delete
+     */
     void deleteTransaction(QModelIndexList list);
+    /**
+     * @brief getCategoriesList
+     * @param type
+     * @return
+     */
     QStandardItemModel* getCategoriesList(QString type);
 
 private:

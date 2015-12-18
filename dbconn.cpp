@@ -19,9 +19,10 @@ DbConn::DbConn()
 QString DbConn::getDbPath()
 {
     QFile* dbPathTxt = new QFile(QDir::currentPath()+"/dbpath.txt");
-    if(!dbPathTxt->open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text)) {
+    if(!dbPathTxt->open(QIODevice::ReadWrite | QIODevice::Text)) {
         QMessageBox::information(0, "error", dbPathTxt->errorString());
-        string txtSPath = (QDir::currentPath() + ("/dbpath.txt")).toUtf8().constData();
+        string txtSPath = ("/dbpath.txt");
+//        .toUtf8().constData();
         std::ofstream o(txtSPath.c_str());
         o << "D:/Qt Projects/QFinance/QFinance.sqlite" << std::endl;
     }
@@ -40,7 +41,7 @@ QString DbConn::getDbPath()
         }
         dbFile.setFileName(*dbPath);
         QTextStream newPath(dbPathTxt);
-        newPath << *dbPath;
+        newPath << *dbPath << endl;
     }
     qDebug() << "fileName is" << dbPath;
     dbPathTxt->close();

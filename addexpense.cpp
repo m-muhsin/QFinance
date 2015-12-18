@@ -20,16 +20,16 @@ AddExpense::~AddExpense()
     delete ui;
 }
 
-void AddExpense::setupEdit(QSqlQueryModel *rowModel)
+void AddExpense::setupEdit(QSqlTableModel *tableModel)
 {
     ui->lblHeader->setText("Edit Expense");
     QString format = "dd/MM/yyyy";
-    this->tempId = rowModel->record(0).value(0).toInt();
-    ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
-    ui->txtAmount->setText(rowModel->record(0).value(2).toString());
-    ui->txtPayee->setText(rowModel->record(0).value(3).toString());
-    ui->cmbCategory->setCurrentText(rowModel->record(0).value(4).toString());
-    ui->txtDescription->setText(rowModel->record(0).value(5).toString());
+    this->tempId = tableModel->record(0).value(0).toInt();
+    ui->txtDate->setDate(QDate::fromString(tableModel->record(0).value(1).toString(), format));
+    ui->txtAmount->setText(tableModel->record(0).value(2).toString());
+    ui->txtPayee->setText(tableModel->record(0).value(3).toString());
+    ui->cmbCategory->setCurrentText(tableModel->record(0).value(4).toString());
+    ui->txtDescription->setText(tableModel->record(0).value(5).toString());
 }
 
 void AddExpense::on_btnSave_clicked()

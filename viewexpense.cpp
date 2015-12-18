@@ -17,6 +17,9 @@ ViewExpense::~ViewExpense()
 
 void ViewExpense::on_btnDelete_clicked()
 {
+    if(ui->tblExpense->selectionModel()->selectedRows().isEmpty())
+        return;
+
     QModelIndexList list = ui->tblExpense->selectionModel()->selectedRows();
     qDebug() << list.count();
     expense->deleteTransaction(list);
@@ -31,10 +34,13 @@ void ViewExpense::setupTable()
 
 void ViewExpense::on_btnEdit_clicked()
 {
+    if(ui->tblExpense->selectionModel()->selectedRows().isEmpty())
+        return;
+
     qDebug() << "inside ViewExpense::on_btnEdit_clicked()";
     QModelIndexList selectedRow = ui->tblExpense->selectionModel()->selectedRows();
     QModelIndex index = selectedRow.takeFirst();
     int in = index.data().toInt();
-    queryModel = expense->getTransaction("expense", in);
-    emit editTransactionClicked("expense", queryModel);
+    tableModel = expense->getTransaction("expense", in);
+    emit editTransactionClicked("expense", tableModel);
 }

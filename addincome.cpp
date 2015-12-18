@@ -22,17 +22,29 @@ AddIncome::~AddIncome()
     delete ui;
 }
 
-void AddIncome::setupEdit(QSqlQueryModel *rowModel)
+//void AddIncome::setupEdit(QSqlQueryModel *rowModel)
+//{
+//    ui->lblHeader->setText("Edit Income");
+//    QString format = "dd/MM/yyyy";
+//    this->tempId = rowModel->record(0).value(0).toInt();
+//    ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
+//    ui->txtAmount->setText(rowModel->record(0).value(2).toString());
+//    ui->txtPayer->setText(rowModel->record(0).value(3).toString());
+//    ui->cmbCategory->setCurrentText(rowModel->record(0).value(4).toString());
+//    ui->txtDescription->setText(rowModel->record(0).value(5).toString());
+
+//}
+
+void AddIncome::setupEdit(QSqlTableModel *tableModel)
 {
     ui->lblHeader->setText("Edit Income");
     QString format = "dd/MM/yyyy";
-    this->tempId = rowModel->record(0).value(0).toInt();
-    ui->txtDate->setDate(QDate::fromString(rowModel->record(0).value(1).toString(), format));
-    ui->txtAmount->setText(rowModel->record(0).value(2).toString());
-    ui->txtPayer->setText(rowModel->record(0).value(3).toString());
-    ui->cmbCategory->setCurrentText(rowModel->record(0).value(4).toString());
-    ui->txtDescription->setText(rowModel->record(0).value(5).toString());
-
+    this->tempId = tableModel->record(0).value(0).toInt();
+    ui->txtDate->setDate(QDate::fromString(tableModel->record(0).value(1).toString(), format));
+    ui->txtAmount->setText(tableModel->record(0).value(2).toString());
+    ui->txtPayer->setText(tableModel->record(0).value(3).toString());
+    ui->cmbCategory->setCurrentText(tableModel->record(0).value(4).toString());
+    ui->txtDescription->setText(tableModel->record(0).value(5).toString());
 }
 
 void AddIncome::on_btnSave_clicked()

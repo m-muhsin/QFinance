@@ -1,1 +1,0 @@
-D:/Qt Projects/QFinance/QFinance.sqlite

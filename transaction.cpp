@@ -8,15 +8,20 @@ QSqlTableModel* Transaction::viewTransaction(QString type)
     return tableModel;
 }
 
-QSqlQueryModel* Transaction::getTransaction(QString type, int id)
+QSqlTableModel* Transaction::getTransaction(QString type, int id)
 {
-    QString in = QString::number(id);
-    queryModel = new QSqlQueryModel;
-    queryModel->setQuery(QString
-                         ("SELECT * FROM '%1' WHERE id = '%2'")
-                         .arg("tbl"+type).arg(in));
+//    QString in = QString::number(id);
+//    queryModel = new QSqlQueryModel;
+//    queryModel->setQuery(QString
+//                         ("SELECT * FROM '%1' WHERE id = '%2'")
+//                         .arg("tbl"+type).arg(in));
 
-    return queryModel;
+//    return queryModel;
+    tableModel = new QSqlTableModel;
+    tableModel->setTable("tbl"+type);
+    tableModel->select();
+    tableModel->setFilter("id="+QString::number(id));
+    return tableModel;
 }
 
 void Transaction::deleteTransaction(QModelIndexList list)

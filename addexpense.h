@@ -19,7 +19,7 @@ class AddExpense : public QWidget
 public:
     explicit AddExpense(QWidget *parent = 0);
     ~AddExpense();
-    void setupEdit(QSqlQueryModel *rowModel);
+    void setupEdit(QSqlTableModel *tableModel);
 
 private slots:
     void on_btnSave_clicked();
