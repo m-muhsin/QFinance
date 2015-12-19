@@ -39,12 +39,12 @@ public:
     void clear(); //!< Clears the entered fields.
 
 private:
-    int firstNumber, secondNumber;
+    int firstNumber, secondNumber = 0;
     bool addition;
     bool subtraction;
     bool multiplication;
     bool division;
-    int result;
+    int result = 0;
 
 };
 

@@ -363,6 +363,7 @@
    <addaction name="actionAdd_Expense"/>
    <addaction name="actionView_Income"/>
    <addaction name="actionView_Expense"/>
+   <addaction name="actionSettings"/>
    <addaction name="actionLog_out"/>
    <addaction name="actionQuit"/>
   </widget>
